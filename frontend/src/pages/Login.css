@@ -1,0 +1,430 @@
+/* src/pages/Login.css */
+.desktop-1 {
+  background-color: rgba(255, 255, 255, 1);
+  padding-left: 52px;
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  .desktop-1 {
+    padding-left: 20px;
+  }
+}
+
+.div {
+  gap: 20px;
+  display: flex;
+}
+
+@media (max-width: 991px) {
+  .div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0px;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 45%;
+  margin-left: 0px;
+}
+
+@media (max-width: 991px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.div-2 {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  margin: auto 0;
+}
+
+@media (max-width: 991px) {
+  .div-2 {
+    max-width: 100%;
+    margin-top: 40px;
+  }
+}
+
+.stock-smart {
+  color: rgba(0, 0, 0, 1);
+  align-self: start;
+  font: 700 36px Raleway, sans-serif;
+}
+
+.div-3 {
+  border-radius: 30px;
+  align-self: end;
+  display: flex;
+  margin-top: 69px;
+  width: 551px;
+  max-width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Poppins, sans-serif;
+  padding: 52px 60px 81px;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+@media (max-width: 991px) {
+  .div-3 {
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+}
+
+.div-4 {
+  align-self: end;
+  display: flex;
+  margin-right: 21px;
+  width: 280px;
+  max-width: 100%;
+  flex-direction: column;
+  font-size: 48px;
+  color: rgba(0, 0, 0, 1);
+  font-weight: 500;
+  white-space: nowrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+@media (max-width: 991px) {
+  .div-4 {
+    margin-right: 10px;
+    font-size: 40px;
+    white-space: initial;
+  }
+}
+
+.div-5 {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: start;
+}
+
+@media (max-width: 991px) {
+  .div-5 {
+    font-size: 40px;
+    white-space: initial;
+  }
+}
+
+.login {}
+
+@media (max-width: 991px) {
+  .login {
+    font-size: 40px;
+  }
+}
+
+.div-6 {
+  border-radius: 0px 0px 0px 0px;
+  align-self: start;
+  display: flex;
+  min-height: 0px;
+  margin-top: 30px;
+  max-width: 100%;
+}
+
+.input-collection {
+  display: flex;
+  margin-top: 26px;
+  min-height: 530px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 10px 10px 41px;
+}
+
+@media (max-width: 991px) {
+  .input-collection {
+    max-width: 100%;
+  }
+}
+
+.google-button {
+  border-radius: 50px;
+  align-self: stretch;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 1);
+  font-weight: 400;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.sign-in-with-google {
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.img {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 32px;
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.div-7 {
+  display: flex;
+  margin-top: 15px;
+  max-width: 100%;
+  width: 410px;
+  flex-direction: column;
+  font-weight: 400;
+}
+
+.div-8 {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+
+.email {
+  color: rgba(16, 21, 64, 1);
+  font-size: 16px;
+}
+
+.enter-you-email {
+  align-self: stretch;
+  border-radius: 5px;
+  background-color: rgba(237, 240, 242, 1);
+  margin-top: 5px;
+  min-height: 60px;
+  width: 100%;
+  gap: 10px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.68);
+  padding: 19px 10px;
+  border: 1px solid rgba(143, 143, 143, 1);
+}
+
+.div-9 {
+  display: flex;
+  margin-top: 5px;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+
+.div-10 {
+  display: flex;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 410px;
+  align-items: center;
+  gap: 40px 84px;
+  font-size: 16px;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.div-11 {
+  border-radius: 5px;
+  align-self: stretch;
+  display: flex;
+  gap: 16px;
+  color: rgba(0, 0, 0, 1);
+  font-weight: 400;
+  width: 160px;
+  margin: auto 0;
+}
+
+.div-12 {
+  border-radius: 5px;
+  display: flex;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.remember-me {
+  flex-basis: auto;
+}
+
+.forgot-password {
+  color: rgba(16, 21, 64, 1);
+  font-weight: 500;
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.div-13 {
+  border-radius: 500px;
+  background-color: rgba(0, 0, 0, 1);
+  display: flex;
+  margin-top: 15px;
+  width: 202px;
+  max-width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 400;
+  text-align: center;
+}
+
+.export-to-excel {
+  align-self: stretch;
+  width: 172px;
+  border-radius: 5px;
+  min-height: 56px;
+  gap: 10px;
+  padding: 10px 15px;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.not-regestered-yet-create-a-new-account {
+  align-self: stretch;
+  margin-top: 15px;
+  max-width: 100%;
+  width: 410px;
+  gap: 10px;
+  font-size: 16px;
+  color: rgba(16, 21, 64, 1);
+  font-weight: 500;
+  padding: 10px;
+}
+
+.column-2 {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 55%;
+  margin-left: 20px;
+}
+
+@media (max-width: 991px) {
+  .column-2 {
+    width: 100%;
+  }
+}
+
+.div-14 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 1024px;
+  flex-grow: 1;
+  color: rgba(255, 255, 255, 1);
+  font: 400 35px Raleway, sans-serif;
+}
+
+@media (max-width: 991px) {
+  .div-14 {
+    max-width: 100%;
+    margin-top: 40px;
+  }
+}
+
+.img-2 {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hint-1 {
+  position: relative;
+  background-color: rgba(31, 28, 28, 0.51);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 173px 18px 279px;
+}
+
+@media (max-width: 991px) {
+  .hint-1 {
+    max-width: 100%;
+    padding: 100px 0;
+  }
+}
+
+.welcome-back {
+  font-size: 53px;
+  font-weight: 700;
+}
+
+@media (max-width: 991px) {
+  .welcome-back {
+    max-width: 100%;
+    font-size: 40px;
+  }
+}
+
+.please-sign-in-to-your-account-with-the-given-details-to-continue {
+  text-align: center;
+  margin-top: 19px;
+}
+
+@media (max-width: 991px) {
+  .please-sign-in-to-your-account-with-the-given-details-to-continue {
+    max-width: 100%;
+  }
+}
+
+.new-here-create-a-new-account {
+  text-align: center;
+  margin-top: 19px;
+}
+
+@media (max-width: 991px) {
+  .new-here-create-a-new-account {
+    max-width: 100%;
+  }
+}
+
+.div-15 {
+  border-radius: 500px;
+  background-color: rgba(0, 0, 0, 1);
+  display: flex;
+  margin-top: 19px;
+  width: 286px;
+  max-width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  text-align: center;
+  justify-content: center;
+  padding: 20px 42px;
+  font: 32px Poppins, sans-serif;
+}
+
+@media (max-width: 991px) {
+  .div-15 {
+    padding: 0 20px;
+  }
+}
+
+.export-to-excel-2 {
+  align-self: stretch;
+  width: 172px;
+  border-radius: 5px;
+  min-height: 56px;
+  gap: 10px;
+  padding: 4px 15px;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+.img-2{
+  background: url(./images/images.jpg);
+}
