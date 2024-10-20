@@ -1,0 +1,113 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #F5F5F5;
+    color: #333;
+  }
+  
+  /* HomePage Styles */
+  .home-container {
+    text-align: center;
+    min-height: 100vh;
+  }
+  
+  .home-header {
+    padding: 50px;
+    background-size: cover;
+    color: #fff;
+  }
+  
+  .header-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .header-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .header-content button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .nav-links a:hover {
+    color: #007BFF;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    font-size: 0.9rem;
+  }
+  
+  .footer-left p {
+    margin: 5px 0;
+  }
+  
+  .footer-right ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .footer-right a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer-right a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Button Styles */
+  .button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #555;
+  }
+  

@@ -1,0 +1,32 @@
+.button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid black; /* Black border */
+  border-radius: 30px; /* Rounded corners */
+  background-color: white; /* White background */
+  color: black; /* Black text */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+.button:hover {
+  background-color: black; 
+  color: white; 
+}
+
+
+.navbar .nav-buttons .button {
+  background-color: #023246;
+  margin-left: 10px;
+}
+.navbar .nav-buttons .button:hover {
+  background-color: #5189a1;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+}
