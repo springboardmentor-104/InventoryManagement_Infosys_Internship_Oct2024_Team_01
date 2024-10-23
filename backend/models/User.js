@@ -21,6 +21,14 @@ const userSchema = new mongoose.Schema({
     enum: ['user', 'admin'], // Only allow these values
     default: 'user', // Default role is user
   },
+  otp: {
+    type: String,
+    required: false,
+},
+otpExpiration: {
+    type: Date,
+    required: false,
+},
 }, { timestamps: true }); 
 
 const User = mongoose.model('User', userSchema);
