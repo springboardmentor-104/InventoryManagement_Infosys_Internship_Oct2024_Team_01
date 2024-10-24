@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Signup.css'; // Create a CSS file for styling
+import axios from 'axios';
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState('');
@@ -10,11 +11,30 @@ const SignUp = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [termsAgreed, setTermsAgreed] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle the form submission logic (e.g., send data to an API)
-    console.log({ firstName, lastName, email, phone, password, termsAgreed });
+    // Construct the data from state
+    const userData = {
+      name: `${firstName} ${lastName}`,
+      email,
+      phone,
+      password,
+      termsAgreed,
+    };
+
+    try {
+      // Sending data to the backend API
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/register`, userData);
+      setSuccess('User registered successfully!');
+      setError(null);
+
+    } catch (err) {
+      console.error('Registration error:', err);
+      setError('Error registering the user. Please try again.');
+    }
   };
 
   return (
