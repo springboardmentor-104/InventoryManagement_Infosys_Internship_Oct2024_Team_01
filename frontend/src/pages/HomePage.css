@@ -1,0 +1,97 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+.home-header {
+  position: relative; 
+  background-image: url('./images/bgimage.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  padding: 200px 0;
+  color: white;
+  text-align: center;
+  flex-grow: 1; 
+  
+}
+.home-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.2); /* White overlay with 50% opacity */
+  z-index: 1; /* Place it behind the text */
+}
+
+
+.header-content {
+  position: relative;
+  z-index: 2; 
+  margin-top: 120px;
+  color: #000000;
+}
+
+.header-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.header-content p {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+.features-section {
+  background-color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.features-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.features-content h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.feature-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5px; /* Decrease the gap from 20px to a smaller value */
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background-color: #287094;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.feature-card p {
+  font-size: 1rem;
+}
+

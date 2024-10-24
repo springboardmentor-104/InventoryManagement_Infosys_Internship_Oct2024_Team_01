@@ -1,0 +1,46 @@
+.navbar {
+  height: 50px; 
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; 
+  position: relative;
+  z-index: 10;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  margin-left: auto; 
+  font-size: large;
+  padding: 0;
+}
+
+.navbar .nav-links li {
+  margin-right: 20px; 
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+  padding: 8px 12px;
+}
+
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-buttons .login-btn, .signup-btn {
+  padding: 6px 18px; 
+  font-size: 0.9rem;
+  border-radius: 5px;
+  background-color: #023246;
+  color: white;
+}
+
+.navbar-buttons .login-btn {
+  margin-right: 10px;
+}
