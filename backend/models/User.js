@@ -29,6 +29,8 @@ otpExpiration: {
     type: Date,
     required: false,
 },
+resetPasswordToken: String,
+resetPasswordExpires: Date,
 }, { timestamps: true }); 
 
 const User = mongoose.model('User', userSchema);

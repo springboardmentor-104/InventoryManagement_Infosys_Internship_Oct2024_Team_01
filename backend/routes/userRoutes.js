@@ -2,6 +2,7 @@ const express = require('express');
 const { register, login, verifyOtp } = require('../controllers/userController');
 const authMiddleware = require('../middlewares/authMiddleware');
 const validateOtpInput = require('../middlewares/validateOtp');
+const { forgotPassword, resetPassword } = require('../controllers/userController');
 
 const router = express.Router(); 
 
@@ -18,5 +19,10 @@ router.get('/protected', authMiddleware, (req, res) => {
 
 // OTP verification route
 router.post('/verify-otp', validateOtpInput, verifyOtp);
+
+// ForgetPassword route
+router.post('/forgot-password', forgotPassword);  // Request password reset
+router.post('/reset-password/:token', resetPassword);  // Reset password
+
 
 module.exports = router;
