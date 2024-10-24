@@ -12,6 +12,11 @@ exports.register = async (req, res) => {
     const otpExpiration = Date.now() + 10 * 60 * 1000; // OTP valid for 10 minutes
 
     try {
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: 'User with this email already exists.' });
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = new User({
             name,
@@ -24,7 +29,11 @@ exports.register = async (req, res) => {
         await user.save();
 
         // Send OTP email
-        await sendEmail(email, 'Your OTP Code', `Your OTP code is: ${otp}`);
+        await sendEmail({
+            to: user.email,
+            subject: 'Your OTP Code',
+            text: `Your OTP code is: ${otp}`,
+        });
 
         res.status(201).json({ message: 'User registered. Check your email for the OTP.' });
     } catch (error) {
