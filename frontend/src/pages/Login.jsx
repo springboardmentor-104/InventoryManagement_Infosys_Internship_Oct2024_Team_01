@@ -1,11 +1,15 @@
 // src/pages/Login.jsx
 import React from 'react';
-import './Login.css'; // Import the stylesheet
+import './Login.css';
 
 const Login = () => {
   const onFinish = (e) => {
     e.preventDefault();
     console.log('Form submitted');
+  };
+
+  const handleGoogleSignIn = () => {
+    window.location.href = '#';
   };
 
   return (
@@ -23,13 +27,15 @@ const Login = () => {
               </div>
               <div className="input-collection">
                 <div className="google-button">
-                  <div className="sign-in-with-google">Sign in with Google</div>
-                  <img
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/ca85bd4195c3967cf9597af5d7101f3f1cf8777bf80cb8a91b2c6be32dcc5905?placeholderIfAbsent=true&apiKey=6de64210dad5440294bfb16468effd24"
-                    className="img"
-                    alt="Google Icon"
-                  />
+                  <button onClick={handleGoogleSignIn} className="google-button">
+                    <div className="sign-in-with-google">Sign in with Google</div>
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/ca85bd4195c3967cf9597af5d7101f3f1cf8777bf80cb8a91b2c6be32dcc5905?placeholderIfAbsent=true&apiKey=6de64210dad5440294bfb16468effd24"
+                      className="img"
+                      alt="Google Icon"
+                    />
+                  </button>
                 </div>
                 <form className="div-7" onSubmit={onFinish}>
                   <div className="div-8">
@@ -55,18 +61,15 @@ const Login = () => {
                       <input type="checkbox" />
                       <span className="remember-me">Remember me</span>
                     </div>
-                    <div className="forgot-password">Forgot password?</div>
+                    <div className="forgot-password">
+                      <a href="/#">Forgot password?</a>
+                    </div>
+
                   </div>
                   <button className="div-13" type="submit">
                     Sign In
                   </button>
                 </form>
-                <div className="not-regestered-yet-create-a-new-account">
-                  <span style={{ color: 'rgba(19, 19, 19, 1)' }}>
-                    Not registered yet?
-                  </span>
-                  <span>Create a new account</span>
-                </div>
               </div>
             </div>
           </div>
@@ -91,7 +94,8 @@ const Login = () => {
               <div className="new-here-create-a-new-account">
                 New here? create a new account
               </div>
-              <button className="div-15">Sign Up</button>
+              <button className="div-15" onClick={() => window.location.href = '/signup'}>Sign Up
+              </button>
             </div>
           </div>
         </div>
