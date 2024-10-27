@@ -29,6 +29,10 @@ otpExpiration: {
     type: Date,
     required: false,
 },
+isOtpVerified: { 
+  type: Boolean,
+  default: false
+},
 resetPasswordToken: String,
 resetPasswordExpires: Date,
 }, { timestamps: true }); 

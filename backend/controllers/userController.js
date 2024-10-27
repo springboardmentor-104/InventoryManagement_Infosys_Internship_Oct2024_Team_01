@@ -5,6 +5,7 @@ const { createToken } = require('../utils/jwt');
 const { sendEmail }= require('../config/mailer');
 const { generateResetToken } = require('../utils/passwordReset');
 
+
 // Registration Logic
 exports.register = async (req, res) => {
     const { name, email, password } = req.body;
@@ -42,6 +43,7 @@ exports.register = async (req, res) => {
     }
 };
 
+
 // Login Logic
 exports.login = async (req, res) => {
     const { email, password } = req.body;
@@ -55,6 +57,8 @@ exports.login = async (req, res) => {
         if (!user) {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
+
+        if (!user.isOtpVerified) return res.status(400).json({ message: 'Please verify your OTP before logging in.' });
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
@@ -71,6 +75,7 @@ exports.login = async (req, res) => {
     }
 };
 
+
 // OTP Verification Logic
 exports.verifyOtp = async (req, res) => {
     const { email, otp } = req.body;
@@ -82,19 +87,25 @@ exports.verifyOtp = async (req, res) => {
             return res.status(404).json({ message: 'User not found.' });
         }
 
-        // Check if OTP matches and is not expired
+        if (user.otp !== otp || user.otpExpiration < Date.now()) {
+            return res.status(400).json({ message: 'Invalid or expired OTP.' });
+        }
+
         if (user.otp === otp && user.otpExpiration > Date.now()) {
+            user.isOtpVerified = true;
+            await user.save();
             return res.status(200).json({ message: 'OTP verified successfully.' });
         } else {
             return res.status(400).json({ message: 'Invalid or expired OTP.' });
         }
+
     } catch (error) {
         return res.status(500).json({ message: 'Server error', error: error.message });
     }
 };
 
-// ForgetPassword Logic
 
+// ForgetPassword Logic
 exports.forgotPassword = async (req, res) => {
     try {
         const { email } = req.body;
@@ -134,6 +145,7 @@ exports.forgotPassword = async (req, res) => {
     }
 };
 
+//Resetting the Password
 exports.resetPassword = async (req, res) => {
     try {
         const { token } = req.params;
