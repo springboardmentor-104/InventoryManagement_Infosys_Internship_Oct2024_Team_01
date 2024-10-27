@@ -1,0 +1,122 @@
+/* Container styling */
+.otp-verification-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.otp-verification-container:hover {
+  transform: scale(1.02);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Form styling */
+.otp-form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.otp-input {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: box-shadow 0.3s;
+}
+
+.otp-input:focus {
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* Button styling with loading animation */
+.otp-button {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.otp-button:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.otp-button.loading {
+  background-color: #0056b3;
+  cursor: not-allowed;
+}
+
+.loading-spinner {
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error message styling */
+.error-message {
+  color: #e63946;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 500px) {
+  .otp-verification-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .otp-button, .otp-input {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+/* Timer styling */
+.timer {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Mobile styling for timer */
+@media (max-width: 500px) {
+  .timer {
+    font-size: 14px;
+  }
+}
