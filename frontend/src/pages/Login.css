@@ -72,6 +72,20 @@
   border: 1px solid rgba(0, 0, 0, 1);
 }
 
+div-3 {
+  border-radius: 30px;
+  align-self: end;
+  display: flex;
+  margin-top: 69px;
+  width: 551px;
+  max-width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Poppins, sans-serif;
+  padding: 6px 49px 9px;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
 @media (max-width: 991px) {
   .div-3 {
     margin-top: 40px;
@@ -116,7 +130,6 @@
   }
 }
 
-.login {}
 
 @media (max-width: 991px) {
   .login {
@@ -157,12 +170,17 @@
   width: 100%;
   align-items: center;
   gap: 10px;
-  font-size: 12px;
+  font-size: 20px;
   color: rgba(0, 0, 0, 1);
   font-weight: 400;
   justify-content: center;
   padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.google-button:hover{
+  cursor: pointer;
+  transform: scale(1.025);
+
 }
 
 .sign-in-with-google {
@@ -269,16 +287,20 @@
 .div-13 {
   border-radius: 500px;
   background-color: rgba(0, 0, 0, 1);
+  color: aliceblue;
   display: flex;
-  margin-top: 15px;
-  width: 202px;
+  margin-top: 19px;
+  width: 286px;
   max-width: 100%;
-  flex-direction: column;
   overflow: hidden;
-  font-size: 24px;
-  color: rgba(255, 255, 255, 1);
-  font-weight: 400;
   text-align: center;
+  justify-content: center;
+  padding: 20px 42px;
+  font: 32px Poppins, sans-serif;
+}
+
+.div-13:hover{
+  opacity: 0.7;
 }
 
 .export-to-excel {
@@ -289,18 +311,6 @@
   gap: 10px;
   padding: 10px 15px;
   border: 1px solid rgba(0, 0, 0, 1);
-}
-
-.not-regestered-yet-create-a-new-account {
-  align-self: stretch;
-  margin-top: 15px;
-  max-width: 100%;
-  width: 410px;
-  gap: 10px;
-  font-size: 16px;
-  color: rgba(16, 21, 64, 1);
-  font-weight: 500;
-  padding: 10px;
 }
 
 .column-2 {
@@ -337,7 +347,7 @@
 .img-2 {
   position: absolute;
   inset: 0;
-  height: 100%;
+  height: 94%;
   width: 100%;
   object-fit: cover;
   object-position: center;
@@ -351,7 +361,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  padding: 173px 18px 279px;
+  padding: 300px 18px 300px;
 }
 
 @media (max-width: 991px) {
@@ -398,16 +408,20 @@
 .div-15 {
   border-radius: 500px;
   background-color: rgba(0, 0, 0, 1);
+  color: aliceblue;
   display: flex;
   margin-top: 19px;
   width: 286px;
   max-width: 100%;
-  flex-direction: column;
   overflow: hidden;
   text-align: center;
   justify-content: center;
   padding: 20px 42px;
   font: 32px Poppins, sans-serif;
+}
+
+.div-15:hover{
+  opacity: 0.7;
 }
 
 @media (max-width: 991px) {

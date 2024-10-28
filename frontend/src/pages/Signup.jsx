@@ -122,7 +122,7 @@ const SignUp = () => {
               I agree to all <a href="#">&nbsp;terms & privacy policies</a>
             </div>
             <p className="login-text">
-              Already have an account? <a href="#">Log in</a>
+              Already have an account? <a href="/login">Log in</a>
             </p>
             <button type="submit" className="sign-up-btn">Sign Up</button>
           </form>
@@ -131,5 +131,4 @@ const SignUp = () => {
     </div>
   );
 };
-
 export default SignUp;
