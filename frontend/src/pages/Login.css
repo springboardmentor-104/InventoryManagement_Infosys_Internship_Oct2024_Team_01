@@ -12,8 +12,9 @@
 }
 
 .div {
-  gap: 20px;
+  gap: 110px;
   display: flex;
+  height: fit-content;
 }
 
 @media (max-width: 991px) {
@@ -29,7 +30,10 @@
   flex-direction: column;
   line-height: normal;
   width: 45%;
-  margin-left: 0px;
+  margin-left: 0;
+  height: 100vh;
+  align-items: center; 
+  font-family: 'Roboto', sans-serif;
 }
 
 @media (max-width: 991px) {
@@ -42,49 +46,47 @@
   display: flex;
   flex-direction: column;
   align-self: stretch;
-  margin: auto 0;
+  margin: auto;
 }
 
 @media (max-width: 991px) {
   .div-2 {
     max-width: 100%;
-    margin-top: 40px;
+    margin-top: 5px;
   }
-}
-
-.stock-smart {
-  color: rgba(0, 0, 0, 1);
-  align-self: start;
-  font: 700 36px Raleway, sans-serif;
 }
 
 .div-3 {
   border-radius: 30px;
-  align-self: end;
+  align-self: center;
   display: flex;
-  margin-top: 69px;
-  width: 551px;
-  max-width: 100%;
+  margin-top: 30px;
+  width: 430px;
+  height: 520px;
+  max-width: 80%;
   flex-direction: column;
   overflow: hidden;
-  font-family: Poppins, sans-serif;
+  font-family: 'Roboto', sans-serif;
   padding: 52px 60px 81px;
   border: 1px solid rgba(0, 0, 0, 1);
+  margin-left: 70px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.459);
 }
 
 @media (max-width: 991px) {
   .div-3 {
     margin-top: 40px;
     padding: 0 20px;
+    align-self: center;
   }
 }
 
 .div-4 {
-  align-self: end;
+  align-self: center;
   display: flex;
-  margin-right: 21px;
-  width: 280px;
-  max-width: 100%;
+  margin-right: 0;
+  width: 100%;
+  max-width: 280px;
   flex-direction: column;
   font-size: 48px;
   color: rgba(0, 0, 0, 1);
@@ -92,31 +94,25 @@
   white-space: nowrap;
   justify-content: center;
   padding: 10px;
+  font-family: 'Roboto', sans-serif;
 }
 
 @media (max-width: 991px) {
   .div-4 {
-    margin-right: 10px;
-    font-size: 40px;
-    white-space: initial;
+    font-size: 30px;
+    align-self: center;
+    max-width: 100%;
   }
 }
 
 .div-5 {
   display: flex;
-  width: 100%;
   flex-direction: column;
-  justify-content: start;
+  text-align: center;
 }
 
-@media (max-width: 991px) {
-  .div-5 {
-    font-size: 40px;
-    white-space: initial;
-  }
+.login {
 }
-
-.login {}
 
 @media (max-width: 991px) {
   .login {
@@ -125,22 +121,22 @@
 }
 
 .div-6 {
-  border-radius: 0px 0px 0px 0px;
+  border-radius: 0;
   align-self: start;
   display: flex;
-  min-height: 0px;
+  min-height: 0;
   margin-top: 30px;
   max-width: 100%;
 }
 
 .input-collection {
   display: flex;
-  margin-top: 26px;
+  margin-top: 1px;
   min-height: 530px;
   width: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 10px 10px 41px;
 }
 
@@ -169,16 +165,6 @@
   align-self: stretch;
   margin: auto 0;
 }
-
-.img {
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 32px;
-  align-self: stretch;
-  margin: auto 0;
-}
-
 .div-7 {
   display: flex;
   margin-top: 15px;
@@ -193,23 +179,23 @@
   width: 100%;
   flex-direction: column;
   justify-content: center;
-  padding: 10px;
+  padding: 1px;
 }
 
 .email {
   color: rgba(16, 21, 64, 1);
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .enter-you-email {
   align-self: stretch;
   border-radius: 5px;
   background-color: rgba(237, 240, 242, 1);
-  margin-top: 5px;
-  min-height: 60px;
+  margin-top: 2px;
+  height: 14px;
   width: 100%;
   gap: 10px;
-  font-size: 15px;
+  font-size: 14px;
   color: rgba(0, 0, 0, 0.68);
   padding: 19px 10px;
   border: 1px solid rgba(143, 143, 143, 1);
@@ -221,19 +207,15 @@
   width: 100%;
   flex-direction: column;
   justify-content: center;
-  padding: 10px;
+  padding: 1px;
 }
 
 .div-10 {
   display: flex;
-  margin-top: 15px;
-  width: 100%;
+  margin-top: 10px;
   max-width: 410px;
-  align-items: center;
-  gap: 40px 84px;
-  font-size: 16px;
-  justify-content: space-between;
-  padding: 10px;
+  font-size: 14px;
+  align-self: center;
 }
 
 .div-11 {
@@ -264,21 +246,31 @@
   font-weight: 500;
   align-self: stretch;
   margin: auto 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 .div-13 {
   border-radius: 500px;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: #023246;
   display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 15px;
   width: 202px;
   max-width: 100%;
-  flex-direction: column;
-  overflow: hidden;
-  font-size: 24px;
+  padding: 10px 20px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 1);
   font-weight: 400;
   text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  align-self: center;
+}
+
+.div-13:hover {
+  background-color: #5189a1;
 }
 
 .export-to-excel {
@@ -292,13 +284,10 @@
 }
 
 .not-regestered-yet-create-a-new-account {
-  align-self: stretch;
   margin-top: 15px;
-  max-width: 100%;
-  width: 410px;
-  gap: 10px;
+  align-content: center;
   font-size: 16px;
-  color: rgba(16, 21, 64, 1);
+  color: rgb(0, 0, 0);
   font-weight: 500;
   padding: 10px;
 }
@@ -321,10 +310,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  min-height: 1024px;
   flex-grow: 1;
-  color: rgba(255, 255, 255, 1);
-  font: 400 35px Raleway, sans-serif;
+  color: rgb(255, 255, 255);
+  font: 'Roboto', sans-serif;
+  font-size: 14;
 }
 
 @media (max-width: 991px) {
@@ -341,17 +330,17 @@
   width: 100%;
   object-fit: cover;
   object-position: center;
+  background-size: cover;
+  filter: blur(3px);
 }
 
 .hint-1 {
   position: relative;
-  background-color: rgba(31, 28, 28, 0.51);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  padding: 173px 18px 279px;
 }
 
 @media (max-width: 991px) {
@@ -364,6 +353,7 @@
 .welcome-back {
   font-size: 53px;
   font-weight: 700;
+  font-family: 'Roboto', sans-serif;
 }
 
 @media (max-width: 991px) {
@@ -376,17 +366,15 @@
 .please-sign-in-to-your-account-with-the-given-details-to-continue {
   text-align: center;
   margin-top: 19px;
-}
-
-@media (max-width: 991px) {
-  .please-sign-in-to-your-account-with-the-given-details-to-continue {
-    max-width: 100%;
-  }
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
 }
 
 .new-here-create-a-new-account {
   text-align: center;
   margin-top: 19px;
+  font-family: 'Roboto', sans-serif;
 }
 
 @media (max-width: 991px) {
@@ -396,24 +384,21 @@
 }
 
 .div-15 {
-  border-radius: 500px;
-  background-color: rgba(0, 0, 0, 1);
-  display: flex;
-  margin-top: 19px;
-  width: 286px;
-  max-width: 100%;
-  flex-direction: column;
-  overflow: hidden;
-  text-align: center;
-  justify-content: center;
-  padding: 20px 42px;
-  font: 32px Poppins, sans-serif;
+  margin-top: 10px;
+  width: 200px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #023246;
+  font-size: medium;
+  color: white;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  transition: background-color 0.3s ease;
 }
 
-@media (max-width: 991px) {
-  .div-15 {
-    padding: 0 20px;
-  }
+.div-15:hover {
+  background-color: #5189a1;
 }
 
 .export-to-excel-2 {
@@ -425,6 +410,56 @@
   padding: 4px 15px;
   border: 1px solid rgba(0, 0, 0, 1);
 }
-.img-2{
+
+.img-2 {
   background: url(./images/images.jpg);
+  height: 100vh;
 }
+.sign-in-with-google-container {
+  display: flex;
+  align-items: center;
+}
+
+.google-icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #023246;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+}
+
+.google-icon-button:hover {
+  background-color: #394c55;
+}
+
+.google-icon {
+  width: 24px; 
+  height: 24px; 
+}
+
+.sign-in-with-google {
+  color: rgb(0, 0, 0); 
+  font-size: 14px;
+}
+.role-selection {
+  display: flex;
+  gap: 20px; /* Space between the radio buttons */
+  margin-bottom: 20px; /* Space below the radio buttons */
+}
+
+.role-selection label {
+  font-size: 14px;
+  color: rgba(16, 21, 64, 1);
+}
+.role-selection {
+  display: flex;
+  gap: 20px; /* Space between the buttons */
+  margin-bottom: 20px; /* Space below the buttons */
+}
+
+
