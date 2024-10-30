@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const connectDB = require('./config/db'); 
-const userRoutes = require('./routes/userRoutes'); 
+const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('./routes/productRoutes');
 
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/users', userRoutes);
+app.use('/api/products', productRoutes);
 
 // HomePage 
 app.get('/', (req, res) => {

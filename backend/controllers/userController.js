@@ -8,7 +8,7 @@ const { generateResetToken } = require('../utils/passwordReset');
 
 // Registration Logic
 exports.register = async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, role = 'user'} = req.body;
     const otp = Math.floor(100000 + Math.random() * 900000).toString(); // Generate a 6-digit OTP
     const otpExpiration = Date.now() + 10 * 60 * 1000; // OTP valid for 10 minutes
 
@@ -25,6 +25,7 @@ exports.register = async (req, res) => {
             password: hashedPassword,
             otp,
             otpExpiration,
+            role,
         });
 
         await user.save();
@@ -85,6 +86,10 @@ exports.verifyOtp = async (req, res) => {
 
         if (!user) {
             return res.status(404).json({ message: 'User not found.' });
+        }
+
+        if( user.isOtpVerified == true) {
+            return res.status(403).json({ message: 'OTP Already verified.' });
         }
 
         if (user.otp !== otp || user.otpExpiration < Date.now()) {
