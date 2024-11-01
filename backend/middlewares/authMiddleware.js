@@ -14,11 +14,11 @@ exports.verifyToken = (req, res, next) => {
 };
 
 exports.isAdmin = (req, res, next) => {
-  if (req.userRole !== 'admin') return res.status(403).json({ message: 'Access denied. (is an Admin)' });
+  if (req.userRole !== 'admin') return res.status(403).json({ message: 'Access denied. (is not Admin)' });
   next();
 };
 
 exports.isUser = (req, res, next) => {
-  if (req.userRole !== 'user') return res.status(403).json({ message: 'Access denied.(is a User)' });
+  if (req.userRole !== 'user') return res.status(403).json({ message: 'Access denied.(is not User)' });
   next();
 };

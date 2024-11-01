@@ -67,7 +67,7 @@ exports.login = async (req, res) => {
         }
 
         // (implementing JWT)
-        const token = createToken(user._id);
+        const token = createToken(user._id, user.role);
 
         res.status(200).json({ token }); // token in response
     } catch (error) {
