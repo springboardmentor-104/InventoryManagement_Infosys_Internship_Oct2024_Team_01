@@ -19,13 +19,27 @@ body {
 
 .left-panel {
   width: 50%;
-  background: url('./images/image.png') center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   color: rgb(255, 255, 255);
   position: relative;
+  overflow: hidden; 
+  font-weight: bold;
 }
+
+.left-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('./images/image.png') center/cover no-repeat;
+  filter: blur(3px); 
+  z-index: -1;
+}
+
 
 .left-panel .overlay {
   padding: 40px;
@@ -39,22 +53,22 @@ body {
 }
 
 .left-panel p {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 20px;
 }
 
 .sign-in-btn {
-  background-color: black;
+  background-color: #023246;
   color: white;
   border: none;
-  padding: 15px 30px;
-  font-size: 18px;
+  padding: 10px 50px;
+  font-size: 16px;
   cursor: pointer;
   border-radius: 25px;
 }
 
 .sign-in-btn:hover {
-  opacity: 0.7;
+  background-color: #5189a1;
 }
 
 .right-panel {
@@ -70,10 +84,11 @@ body {
   padding : 10px;
   width:500px;
   height: 500px;
-  border-radius: 2px;
-  border-color: #555;
+  border-width: 1px;
   border-style: solid;
   border-radius: 30px;
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.459);
   
 }
 
@@ -85,9 +100,10 @@ body {
 }
 
 .right-panel h3 {
-  color: #287094;
-  font-size: 2rem;
+  color: #000000;
+  font-size: 30px;
   margin-top: 10px;
+  font-weight: light;
 }
 
 .right-panel p {
@@ -114,17 +130,18 @@ body {
 }
 
 .input-field label {
-  color: #287094;
+  color: #000000;
   display: block;
   margin-bottom: 5px;
 }
 
 .input-field input {
   width: 100%;
-  height: 30px;
+  height: 35px;
   padding: 10px;
   color: #575151;
   border: 1px solid #ccc;
+  background-color: rgba(237, 240, 242, 1);
   border-radius: 5px;
 }
 
@@ -142,18 +159,18 @@ body {
   display: flex;
   justify-content: center;
   text-align: center;
-  background-color: black;
+  background-color: #023246;
   color: white;
   border: none;
   padding: 8px 20px;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
   border-radius: 25px;
-  width: 20%;
+  width: 30%;
 }
 
 .sign-up-btn:hover {
-  opacity: 0.7;
+  background-color: #5189a1;
 }
 
 .login-text {
@@ -161,7 +178,7 @@ body {
 }
 
 .login-text a {
-  color:#287094;
+  color:#000000;
 }
 
 @media (max-width: 768px) {

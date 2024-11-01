@@ -1,40 +1,19 @@
-// src/pages/Signup.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Signup.css'; // Create a CSS file for styling
-import axios from 'axios';
+import './Signup.css'; 
+import Login from './Login';
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [termsAgreed, setTermsAgreed] = useState(false);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Construct the data from state
-    const userData = {
-      name: `${firstName} ${lastName}`,
-      email,
-      phone,
-      password,
-      termsAgreed,
-    };
-
-    try {
-      // Sending data to the backend API
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/register`, userData);
-      setSuccess('User registered successfully!');
-      setError(null);
-
-    } catch (err) {
-      console.error('Registration error:', err);
-      setError('Error registering the user. Please try again.');
-    }
+    // Handle the form submission logic (e.g., send data to an API)
+    console.log({ firstName, lastName, email, password, termsAgreed });
   };
 
   return (
@@ -42,12 +21,12 @@ const SignUp = () => {
       <div className="left-panel">
         <div className="overlay">
           <h1>Hello friend!</h1>
-          <p>Please provide the information to register your account</p>
-          <p>Already have an account?</p>
+          <p>Please provide the information to <br></br>
+            register your account</p>
+          <p>Already have an account ?</p>
           <Link to={"/login"}>
           <button className="sign-in-btn">Sign In</button>
           </Link>
-         
         </div>
       </div>
       
@@ -90,17 +69,7 @@ const SignUp = () => {
                   onChange={(e) => setEmail(e.target.value)} 
                 />
               </div>
-              <div className="input-field">
-                <label>Phone no.</label>
-                <input 
-                  type="text" 
-                  placeholder="Enter Phone No" 
-                  required 
-                  minLength="8"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)} 
-                />
-              </div>
+              
             </div>
             <div className="input-field">
               <label>Password</label>
@@ -121,9 +90,6 @@ const SignUp = () => {
               /> 
               I agree to all <a href="#">&nbsp;terms & privacy policies</a>
             </div>
-            <p className="login-text">
-              Already have an account? <a href="#">Log in</a>
-            </p>
             <button type="submit" className="sign-up-btn">Sign Up</button>
           </form>
         </div>
