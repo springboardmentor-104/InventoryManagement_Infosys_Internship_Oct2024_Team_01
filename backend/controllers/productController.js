@@ -76,3 +76,14 @@ exports.buyProduct = async (req, res) => {
     res.status(500).json({ message: 'Failed to complete purchase', error });
   }
 };
+
+// Get products by a Category
+exports.getProductsByCategory = async (req, res) => {
+  try {
+    const { categoryId } = req.params;
+    const products = await Product.find({ category: categoryId });
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch products by category', error });
+  }
+};

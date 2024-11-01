@@ -5,6 +5,7 @@ const { verifyToken, isAdmin, isUser } = require('../middlewares/authMiddleware'
 
 // Public route: Get all products (accessible to both roles)
 router.get('/', verifyToken, productController.getProducts);
+router.get('/category/:categoryId', productController.getProductsByCategory);
 
 // Admin routes
 router.post('/', verifyToken, isAdmin, productController.addProduct);
