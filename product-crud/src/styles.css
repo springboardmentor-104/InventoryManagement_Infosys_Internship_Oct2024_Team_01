@@ -28,7 +28,7 @@ th {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    color: white;
+    color: rgb(10, 10, 10);
 }
 
 .btn-edit {
@@ -39,21 +39,55 @@ th {
     background-color: #d9534f;
 }
 
+/* Styles for the modal form inputs */
+.modal-content form div {
+    margin-bottom: 15px; /* Space between each input section */
+}
+
+.modal-content label {
+    display: block; /* Ensures labels are on new lines */
+    margin-bottom: 5px; /* Space below the label */
+}
+
+.modal-content input {
+    width: 100%; /* Makes inputs full width */
+    padding: 8px; /* Adds padding for better appearance */
+    border: 1px solid #ccc; /* Light border for inputs */
+    border-radius: 4px; /* Rounded corners */
+}
+/* Modal styling */
 .modal {
-    position: fixed;
+    position: fixed; /* Keeps the modal in place */
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    z-index: 1000; /* Ensures it appears above other elements */
 }
 
 .modal-content {
-    background: white;
+    background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
-    width: 400px;
+    width: 90%;
+    max-width: 500px; /* Limits the maximum width of the modal */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: slide-down 0.3s ease-out; /* Smooth slide-in animation */
+}
+
+/* Animation to make modal slide down from the top */
+@keyframes slide-down {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

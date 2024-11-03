@@ -12,8 +12,16 @@ const getProducts = async (req, res) => {
 
 // Add a new product
 const addProduct = async (req, res) => {
-    const newProduct = new Product(req.body);
+    const { sku } = req.body;
+
     try {
+        // Check if SKU already exists
+        const existingProduct = await Product.findOne({ sku });
+        if (existingProduct) {
+            return res.status(400).json({ message: 'SKU must be unique.' });
+        }
+
+        const newProduct = new Product(req.body);
         const savedProduct = await newProduct.save();
         res.status(201).json(savedProduct);
     } catch (err) {

@@ -47,22 +47,35 @@ const ProductModal = ({ product, isOpen, onClose, onSave }) => {
             <div className="modal-content">
                 <h2>{product ? "Edit Product" : "Add Product"}</h2>
                 <form onSubmit={handleSubmit}>
-                    <label>Product Name</label>
-                    <input name="name" value={formData.name} onChange={handleChange} required />
-                    <label>SKU</label>
-                    <input name="sku" value={formData.sku} onChange={handleChange} required />
-                    <label>Price</label>
-                    <input type="number" name="price" value={formData.price} onChange={handleChange} required />
-                    <label>Stock</label>
-                    <input type="number" name="stock" value={formData.stock} onChange={handleChange} required />
-                    <label>Views</label>
-                    <input type="number" name="views" value={formData.views} onChange={handleChange} required />
-                    <button type="submit" className="btn">Save</button>
-                    <button type="button" onClick={onClose} className="btn">Cancel</button>
+                    <div>
+                        <label>Product Name</label>
+                        <input name="name" value={formData.name} onChange={handleChange} required />
+                    </div>
+                    <div>
+                        <label>SKU</label>
+                        <input name="sku" value={formData.sku} onChange={handleChange} required />
+                    </div>
+                    <div>
+                        <label>Price</label>
+                        <input type="number" name="price" value={formData.price} onChange={handleChange} required />
+                    </div>
+                    <div>
+                        <label>Stock</label>
+                        <input type="number" name="stock" value={formData.stock} onChange={handleChange} required />
+                    </div>
+                    <div>
+                        <label>Views</label>
+                        <input type="number" name="views" value={formData.views} onChange={handleChange} required />
+                    </div>
+                    <div>
+                        <button type="submit" className="btn btn-add">Save</button>
+                        <button type="button" onClick={onClose} className="btn">Cancel</button>
+                    </div>
                 </form>
             </div>
         </div>
     ) : null;
+    
 };
 
 export default ProductModal;
