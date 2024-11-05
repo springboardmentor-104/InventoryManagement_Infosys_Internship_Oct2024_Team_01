@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import Button from '../components/Button'; // Reusable Button Component
+import '../components/AdminPanel/AdminDashboard';
+import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import './HomePage.css';

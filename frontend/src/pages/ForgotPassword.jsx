@@ -8,7 +8,9 @@ const ForgotPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Simulate sending email
     console.log('Password reset link sent to:', email);
+    // Redirect to the login page or show a success message
     navigate('/login');
   };
 

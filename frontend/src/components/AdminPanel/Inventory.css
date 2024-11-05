@@ -1,0 +1,19 @@
+.inventory {
+    padding: 20px;
+}
+
+.inventory table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.inventory th,
+.inventory td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.inventory th {
+    background-color: #023246;
+}
