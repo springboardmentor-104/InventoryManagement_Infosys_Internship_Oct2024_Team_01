@@ -1,0 +1,8 @@
+Sl No,Submitted By,Submitted Date,Description,Detected Id,Assigned To,Type Of Defect,Action Taken,Action Taken Date,Status(Open/Closed),Remarks
+1,Vivek KS,22-04-2024,"Validating email field by entering registered user's email in Sign up page. When we entered the email that already exists.The expected result is ""Email already exists!"" but the page is again registering the user",DT001,Vivek KS,Standards,Bug is accepted and has been fixed,24-10-2024,Closed,No
+2,Vivek KS,22-04-2024,Validating email sent to the user upon registering. The backend is unable to capture recepients email in few cases and OTP email isn't sent on registration in this scenario.,DT002,Vivek KS,Standards,Bug is accepted and has been fixed ,24-04-2024,Closed,No
+3,Vivek KS,27-10-2024,"Validating the login page by giving the  details of the unverified user (registered user with unverified OTP). When we entered the  email and password then click on login to continue button then the expected result is ""OTP isn't verified"" but the user is able to login without actually verifiying the OTP.",DT003,Vivek KS,Standards,Bug is accepted and fixes has been done to resolve it.  Modified user schema to include isOtpVerified field.,28-10-2024,Closed,redirect to Otp verification page upon encoutering an unverified user.
+4,Vivek KS,01-11-2024,While verifiying the product and protected route which are role based. Issues were identified where role-based access was not applied due to missing role information in the JWT payload.,DT004,Vivek KS,Standards,Misisng feat is accepted and the fix has been provided. Include user role in JWT token payload for role-based access control,01-11-2024,Closed,No
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
