@@ -1,0 +1,100 @@
+/* Container for Products */
+.products-container {
+    padding: 20px;
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the container */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Title Styling */
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  /* Flex container for products */
+  .product-list {
+    display: flex;
+    margin-top: 70px;
+    margin-left:100px;
+    flex-wrap: wrap; /* Wrap items to the next line if needed */
+    gap: 20px; /* Space between the product cards */
+    justify-content: center; /* Center the items horizontally */
+  }
+  
+  /* Styling for each product card */
+  .product-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center;
+    flex: 1 1 calc(100% / 3 - 40px); /* Adjust card width to fit 3 cards per row */
+    max-width: 300px; /* Limit the card width */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    transition: transform 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+  }
+  
+  /* Product image styling */
+  .product-card img {
+    width: 100%;
+    height: 180px; /* Reduced height to better fit within the card */
+    border-radius: 5px;
+    object-fit: cover; /* Cover the image space without distortion */
+    background-color: #f3f3f3; /* Placeholder background color */
+  }
+  
+  /* Product name styling */
+  .product-card h4 {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 10px 0;
+    min-height: 40px; /* Consistent height for product names */
+    overflow: hidden; /* Hide overflow if the name is too long */
+    text-overflow: ellipsis; /* Add ellipsis for long names */
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+  
+  /* Product price styling */
+  .product-card p {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  /* Button styling */
+  .product-card button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .product-card button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .product-card {
+      flex: 1 1 calc(100% / 2 - 20px); /* 2 cards per row on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-card {
+      flex: 1 1 100%; /* 1 card per row on very small screens */
+    }
+  }
+  

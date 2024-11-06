@@ -1,0 +1,45 @@
+/* src/layouts/UserLayout.css */
+
+.user-layout {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #023246;
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+/* User Sidebar Styling */
+.sidebar h3 {
+    color: #fff;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.sidebar ul li a:hover {
+    color: #fff;
+}
