@@ -1,0 +1,62 @@
+/* Orders Container */
+.orders-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .orders-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #023246;
+  }
+  
+  /* Orders Table */
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .orders-table th, .orders-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .orders-table th {
+    background-color: #023246;
+    color: white;
+    font-size: 1.1em;
+  }
+  
+  .orders-table td {
+    font-size: 1em;
+  }
+  
+  .orders-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Responsive Table */
+  @media (max-width: 768px) {
+    .orders-table th, .orders-table td {
+      font-size: 0.9em;
+      padding: 8px;
+    }
+  }
+  
+  /* Order Status Styling */
+  .orders-table td:nth-child(3) {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  
+  /* Add some spacing and rounded corners to the container */
+  .orders-container {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  
