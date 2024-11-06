@@ -12,6 +12,7 @@ import Login from './pages/Login.jsx';
 import ResetPass from './pages/ResetPass.jsx';
 import Signup from './pages/Signup.jsx';
 import './style.css';
+import ProductList from './pages/ProductList.js';
 
 const App = () => {
   return (
@@ -26,7 +27,7 @@ const App = () => {
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="dashboard" element={<AdminDashboard />} />
             <Route path="inventory" element={<Inventory />} />
-            <Route path="products" element={<ProductsPage />} />
+            <Route path="products" element={<ProductList />} />
             <Route path="users" element={<Users />} />
           </Route>
         </Routes>

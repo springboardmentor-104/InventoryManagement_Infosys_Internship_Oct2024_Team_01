@@ -6,7 +6,7 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
-
+// const dashboardRoutes = require('./routes/dashboardRoutes');
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -23,6 +23,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
+// app.use('/api/dashboard', dashboardRoutes)
 
 // HomePage 
 app.get('/', (req, res) => {

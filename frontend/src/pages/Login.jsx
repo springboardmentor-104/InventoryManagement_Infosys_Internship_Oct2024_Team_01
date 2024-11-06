@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Login.css';
 import { Link } from 'react-router-dom';
-import ForgotPassword from './ForgotPassword';
 
 const Login = () => {
-  const [role, setRole] = useState('user'); // State to manage the selected role
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-  const onFinish = (e) => {
+  const onFinish = async (e) => {
     e.preventDefault();
-    console.log('Form submitted');
-    // Implement login logic here based on selected role
+
+    try {
+      const response = await axios.post(
+        `http://localhost:4000/api/users/login`,
+        { email, password },
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+      const { token } = response.data;
+      localStorage.setItem('token', token);
+      window.location.href = '/admin/dashboard';
+    } catch (err) {
+      console.log(err.response);
+      setError('Invalid credentials. Please try again.');
+    }
   };
 
   return (
@@ -24,27 +38,6 @@ const Login = () => {
                 </div>
               </div>
               <div className="input-collection">
-                <div className="role-selection">
-                  <label>
-                    <input
-                      type="radio"
-                      value="user"
-                      checked={role === 'user'}
-                      onChange={() => setRole('user')}
-                    />
-                    User
-                  </label>
-                  <span>  </span>
-                  <label>
-                    <input
-                      type="radio"
-                      value="admin"
-                      checked={role === 'admin'}
-                      onChange={() => setRole('admin')}
-                    />
-                    Admin
-                  </label>
-                </div>
                 <div className="google-button">
                   <div className="sign-in-with-google-container">
                     <div className="google-icon-button">
@@ -65,6 +58,8 @@ const Login = () => {
                     <input
                       type="email"
                       placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       className="enter-you-email"
                       required
                     />
@@ -74,6 +69,8 @@ const Login = () => {
                     <input
                       type="password"
                       placeholder="Minimum 8 characters"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       className="enter-you-email"
                       required
                     />
