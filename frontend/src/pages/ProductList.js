@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductModal from '../components/ProductModal';
 import Product from '../components/Product';
+import './ProductList.css'; // Add a new CSS file for styling
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -12,7 +13,7 @@ const ProductList = () => {
         const fetchProducts = async () => {
             const response = await axios.get("http://localhost:4000/api/products", {
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}` // or wherever you store your token
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             });
             setProducts(response.data);
@@ -47,32 +48,19 @@ const ProductList = () => {
     };
 
     return (
-        <div>
+        <div className="product-list">
             <h2>Product List</h2>
             <button onClick={handleAddProduct} className="btn">Add Product</button>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                        <th>Category</th>
-                        <th>Description</th>
-                        <th>Image URL</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map(product => (
-                        <Product
-                            key={product._id}
-                            product={product}
-                            onEdit={() => handleEditProduct(product)}
-                            onDelete={() => handleDeleteProduct(product._id)}
-                        />
-                    ))}
-                </tbody>
-            </table>
+            <div className="product-grid">
+                {products.map(product => (
+                    <Product
+                        key={product._id}
+                        product={product}
+                        onEdit={() => handleEditProduct(product)}
+                        onDelete={() => handleDeleteProduct(product._id)}
+                    />
+                ))}
+            </div>
 
             <ProductModal
                 product={currentProduct}
