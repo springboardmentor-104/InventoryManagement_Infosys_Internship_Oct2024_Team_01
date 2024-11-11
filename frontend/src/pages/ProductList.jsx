@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ProductModal from '../components/ProductModal';
+import React, { useEffect, useState } from 'react';
 import Product from '../components/Product';
-import './ProductList.css'; // Add a new CSS file for styling
+import ProductModal from '../components/ProductModal';
+import './ProductList.css';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -50,8 +50,10 @@ const ProductList = () => {
     return (
         <div className="product-list">
             <h2>Product List</h2>
+            <div className="add-product-button">
             <button onClick={handleAddProduct} className="btn">Add Product</button>
-            <div className="product-grid">
+            </div>
+            <section className="product-grid">
                 {products.map(product => (
                     <Product
                         key={product._id}
@@ -60,8 +62,7 @@ const ProductList = () => {
                         onDelete={() => handleDeleteProduct(product._id)}
                     />
                 ))}
-            </div>
-
+            </section>
             <ProductModal
                 product={currentProduct}
                 isOpen={isModalOpen}

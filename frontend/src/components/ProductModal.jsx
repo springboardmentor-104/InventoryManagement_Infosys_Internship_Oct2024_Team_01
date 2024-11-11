@@ -1,3 +1,4 @@
+import "./ProductModal.css"
 import React, { useState, useEffect } from 'react';
 
 const ProductModal = ({ product, isOpen, onClose, onSave }) => {
@@ -44,6 +45,7 @@ const ProductModal = ({ product, isOpen, onClose, onSave }) => {
     return isOpen ? (
         <div className="modal">
             <div className="modal-content">
+                <br />
                 <h2>{product ? "Edit Product" : "Add Product"}</h2>
                 <form onSubmit={handleSubmit}>
                     <div>

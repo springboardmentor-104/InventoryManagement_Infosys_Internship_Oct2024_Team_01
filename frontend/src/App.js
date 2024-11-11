@@ -23,7 +23,7 @@ import ResetPass from './pages/ResetPass.jsx';
 import Signup from './pages/Signup.jsx';
 
 import './style.css';
-import ProductList from './pages/ProductList.js';
+import ProductList from './pages/ProductList.jsx';
 
 const App = () => {
   return (

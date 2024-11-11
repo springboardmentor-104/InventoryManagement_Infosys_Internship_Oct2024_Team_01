@@ -1,9 +1,9 @@
 import React from 'react';
-import './Product.css'; // Add a new CSS file for styling
+import './Product.css';
 
 const Product = ({ product, onEdit, onDelete }) => {
     const getImageUrl = (imagePath) => {
-        return `http://localhost:4000/${imagePath}`; // Assuming your backend server is running on port 3000
+        return `http://localhost:4000/${imagePath}`;
     };
 
     return (
@@ -11,7 +11,7 @@ const Product = ({ product, onEdit, onDelete }) => {
             <div className="product-image">
                 {product.images && product.images.length > 0 ? (
                     <img 
-                        src={getImageUrl(product.images[0])} // Get the full URL of the image
+                        src={getImageUrl(product.images[0])}
                         alt={product.name}
                     />
                 ) : (

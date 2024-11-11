@@ -1,7 +1,7 @@
 .product-list {
-    padding: 20px;
-    max-width: 1200px; /* Limit the width of the container */
-    margin: 0 auto;    /* Center the container */
+    padding: 1px;
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
 .btn {
@@ -17,9 +17,21 @@
 .btn:hover {
     background-color: #0056b3;
 }
-
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusted for 3 products per row */
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr); /* Set to 3 columns */
+    gap: 20px; /* Spacing between the cards */
+}
+
+/* Optional: make it responsive to adjust columns based on screen size */
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* Single column for small screens */
+    }
 }
