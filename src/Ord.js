@@ -5,6 +5,7 @@ const OrderPage = () => {
   const [orders, setOrders] = useState([]);
   const [orderHistory, setOrderHistory] = useState([]);
   const [newOrder, setNewOrder] = useState({
+    id: null, // Adding id to newOrder for better order management
     productName: "",
     quantity: "",
     customerName: "",
@@ -63,7 +64,7 @@ const OrderPage = () => {
     }
 
     const order = {
-      id: orders.length + 1,
+      id: newOrder.id || orders.length + 1, // Fix to assign id correctly
       ...newOrder,
       date: new Date().toISOString().split("T")[0],
     };
@@ -75,6 +76,7 @@ const OrderPage = () => {
     }));
 
     setNewOrder({
+      id: null, // Resetting id after order creation
       productName: "",
       quantity: "",
       customerName: "",
@@ -274,24 +276,20 @@ const OrderPage = () => {
               </tbody>
             </table>
           </div>
-          <div className="pagination">
-            {[...Array(Math.ceil(filteredOrders.length / ordersPerPage)).keys()].map((num) => (
-              <button key={num} onClick={() => paginate(num + 1)}>
-                {num + 1}
-              </button>
-            ))}
-          </div>
-        </div>
 
-        <div className="order-history">
-          <h2>Order History</h2>
-          <ul>
-            {orderHistory.map((order) => (
-              <li key={order.id}>
-                {order.productName} - {order.customerName} ({order.status})
-              </li>
-            ))}
-          </ul>
+          <div className="pagination">
+            {Array.from({ length: Math.ceil(filteredOrders.length / ordersPerPage) }).map(
+              (_, index) => (
+                <button
+                  key={index}
+                  onClick={() => paginate(index + 1)}
+                  className={`pagination-btn ${index + 1 === currentPage ? "active" : ""}`}
+                >
+                  {index + 1}
+                </button>
+              )
+            )}
+          </div>
         </div>
       </div>
     </div>
