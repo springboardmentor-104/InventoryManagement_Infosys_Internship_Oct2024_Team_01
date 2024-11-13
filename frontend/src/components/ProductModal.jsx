@@ -1,5 +1,6 @@
 import "./ProductModal.css"
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const ProductModal = ({ product, isOpen, onClose, onSave }) => {
     const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const ProductModal = ({ product, isOpen, onClose, onSave }) => {
         category: '',
         imageUrl: '',
     });
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         if (product) {
@@ -32,6 +34,19 @@ const ProductModal = ({ product, isOpen, onClose, onSave }) => {
             });
         }
     }, [product]);
+
+    useEffect(() => {
+        // Fetch categories from the backend
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get('http://localhost:4000/api/categories'); // Assuming you have this route
+                setCategories(response.data);
+            } catch (error) {
+                console.error("Failed to fetch categories:", error);
+            }
+        };
+        fetchCategories();
+    }, []);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -66,7 +81,12 @@ const ProductModal = ({ product, isOpen, onClose, onSave }) => {
                     </div>
                     <div>
                         <label>Category</label>
-                        <input name="category" value={formData.category} onChange={handleChange} required />
+                        <select name="category" value={formData.category} onChange={handleChange} required>
+                            <option value="">Select a category</option>
+                            {categories.map((cat) => (
+                                <option key={cat._id} value={cat._id}>{cat.name}</option>
+                            ))}
+                        </select>
                     </div>
                     <div>
                         <label>Image URL</label>

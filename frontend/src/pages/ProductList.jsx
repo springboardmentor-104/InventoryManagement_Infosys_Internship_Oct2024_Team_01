@@ -31,20 +31,22 @@ const ProductList = () => {
         setIsModalOpen(true);
     };
 
-    const handleSaveProduct = async (product) => {
-        if (product._id) {
-            const response = await axios.put(`http://localhost:4000/api/products/${product._id}`, product);
-            setProducts(products.map(p => (p._id === response.data._id ? response.data : p)));
-        } else {
-            const response = await axios.post("http://localhost:4000/api/products", product);
-            setProducts([...products, response.data]);
-        }
-        setIsModalOpen(false);
-    };
+    const handleSaveProduct = async (product) => { const config = { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }; try { if (product._id) { const response = await axios.put( `http://localhost:4000/api/products/${product._id}`, product, config ); setProducts(products.map(p => (p._id === response.data._id ? response.data : p))); } else { const response = await axios.post("http://localhost:4000/api/products", product, config); setProducts([...products, response.data]); } } catch (error) { console.error("Error saving product:", error); alert("Failed to save product. Please check your permissions."); } setIsModalOpen(false); };
 
     const handleDeleteProduct = async (id) => {
-        await axios.delete(`http://localhost:4000/api/products/${id}`);
-        setProducts(products.filter(product => product._id !== id));
+        const config = {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        };
+        
+        try {
+            await axios.delete(`http://localhost:4000/api/products/${id}`, config);
+            setProducts(products.filter(product => product._id !== id));
+        } catch (error) {
+            console.error("Error deleting product:", error);
+            alert("Failed to delete product. Please check your permissions.");
+        }
     };
 
     return (
