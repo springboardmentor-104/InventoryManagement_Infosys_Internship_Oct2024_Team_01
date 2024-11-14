@@ -1,100 +1,132 @@
 /* Container for Products */
 .products-container {
-    padding: 20px;
-    max-width: 1200px; /* Set a maximum width for the content */
-    margin: 0 auto; /* Center the container */
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* Title Styling */
-  h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #333;
-  }
-  
-  /* Flex container for products */
-  .product-list {
-    display: flex;
-    margin-top: 70px;
-    margin-left:100px;
-    flex-wrap: wrap; /* Wrap items to the next line if needed */
-    gap: 20px; /* Space between the product cards */
-    justify-content: center; /* Center the items horizontally */
-  }
-  
-  /* Styling for each product card */
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Title Styling */
+.products-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Flex container for products */
+.product-list {
+  display: flex;
+  gap: 10px; /* Small gap between cards */
+  justify-content: flex-start; /* Align cards to the start */
+  padding: 20px;
+  flex-wrap: wrap; /* Allow wrapping to the next row */
+}
+
+/* Styling for each product card */
+.product-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 23%; /* 4 cards per row (adjust to fit space) */
+  box-sizing: border-box;
+  transition: transform 0.2s ease;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Product image styling */
+.product-card img {
+  width: 100%;
+  height: 250px;
+  border-radius: 5px;
+  object-fit: cover;
+  background-color: #f3f3f3;
+}
+
+/* Product name styling */
+.product-card h4 {
+  font-size: 1rem;
+  color: #333;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  min-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Product price styling */
+.product-card p {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 5px 0;
+}
+
+.product-card p.price {
+  font-weight: bold;
+  color: #333;
+}
+
+.product-card p del {
+  color: #999;
+  font-size: 0.8rem;
+  margin-left: 5px;
+  font-weight: normal;
+}
+
+/* Button styling */
+.product-card button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #0071e3;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.product-card button:hover {
+  background-color: #005bb5;
+}
+
+/* Rating and Discount Badge styling */
+.product-card .rating,
+.product-card .discount {
+  font-size: 0.85rem;
+  color: #ff3f6c;
+  font-weight: bold;
+}
+
+.product-card .rating {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.product-card .discount {
+  color: #ff905a;
+  margin-left: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .product-card {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    text-align: center;
-    flex: 1 1 calc(100% / 3 - 40px); /* Adjust card width to fit 3 cards per row */
-    max-width: 300px; /* Limit the card width */
-    box-sizing: border-box; /* Include padding and border in the width calculation */
-    transition: transform 0.3s ease;
+    width: 45%; /* 2 cards per row */
   }
-  
-  .product-card:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    width: 100%; /* 1 card per row */
   }
-  
-  /* Product image styling */
-  .product-card img {
-    width: 100%;
-    height: 180px; /* Reduced height to better fit within the card */
-    border-radius: 5px;
-    object-fit: cover; /* Cover the image space without distortion */
-    background-color: #f3f3f3; /* Placeholder background color */
-  }
-  
-  /* Product name styling */
-  .product-card h4 {
-    font-size: 1.1rem;
-    color: #555;
-    margin: 10px 0;
-    min-height: 40px; /* Consistent height for product names */
-    overflow: hidden; /* Hide overflow if the name is too long */
-    text-overflow: ellipsis; /* Add ellipsis for long names */
-    white-space: nowrap; /* Prevent text from wrapping */
-  }
-  
-  /* Product price styling */
-  .product-card p {
-    font-size: 1rem;
-    color: #333;
-    font-weight: bold;
-    margin: 5px 0;
-  }
-  
-  /* Button styling */
-  .product-card button {
-    margin-top: 10px;
-    padding: 8px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .product-card button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .product-card {
-      flex: 1 1 calc(100% / 2 - 20px); /* 2 cards per row on smaller screens */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .product-card {
-      flex: 1 1 100%; /* 1 card per row on very small screens */
-    }
-  }
-  
+}

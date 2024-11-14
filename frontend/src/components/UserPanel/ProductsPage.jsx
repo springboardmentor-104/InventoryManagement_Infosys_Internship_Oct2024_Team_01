@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import './ProductsPage.css';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -13,10 +14,11 @@ const ProductsPage = () => {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
         });
-        
+
         if (response.status !== 200) {
           throw new Error('Failed to fetch products');
         }
+
         setProducts(response.data);
       } catch (err) {
         setError(err.message);

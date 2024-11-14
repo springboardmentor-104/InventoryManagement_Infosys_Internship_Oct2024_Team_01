@@ -37,95 +37,72 @@ const Login = () => {
   
 
   return (
-    <div className="desktop-1">
-      <div className="div">
-        <div className="column">
-          <div className="div-2">
-            <div className="div-3">
-              <div className="div-4">
-                <div className="div-5">
-                  <div className="login">Login</div>
-                </div>
-              </div>
-              <div className="input-collection">
-                <div className="google-button">
-                  <div className="sign-in-with-google-container">
-                    <div className="google-icon-button">
-                      <img
-                        loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/ca85bd4195c3967cf9597af5d7101f3f1cf8777bf80cb8a91b2c6be32dcc5905?placeholderIfAbsent=true&apiKey=6de64210dad5440294bfb16468effd24"
-                        className="google-icon"
-                        alt="Google Icon"
-                      />
-                    </div>
-                    <div className="sign-in-with-google">Sign in with Google</div>
-                  </div>
-                </div>
-
-                <form className="div-7" onSubmit={onFinish}>
-                  <div className="div-8">
-                    <label className="email">Email</label>
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="enter-you-email"
-                      required
-                    />
-                  </div>
-                  <div className="div-9">
-                    <label className="email">Password</label>
-                    <input
-                      type="password"
-                      placeholder="Minimum 8 characters"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="enter-you-email"
-                      required
-                    />
-                  </div>
-                  <div className="div-10">
-                    <div className="forgot-password">
-                      <Link to="/forgot-password">Forgot password?</Link>
-                    </div>
-                  </div>
-                  <button className="div-13" type="submit">
-                    Sign In
-                  </button>
-                </form>
-                <div className="not-regestered-yet-create-a-new-account">
-                  <span style={{ color: 'rgba(19, 19, 19, 1)' }}>
-                    Not registered yet?
-                  </span>
-                  <Link to="/signup">Create a new account</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="column-2">
-          <div className="div-14">
+    <div className="login-page">
+      <div className="card-container">
+        {/* Left Panel (Login Form) */}
+        <div className="login-panel">
+          <h2 className="login-title">Login</h2>
+          <div className="google-button">
             <img
               loading="lazy"
-              src="https://images.pexels.com/photos/6169180/pexels-photo-6169180.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              className="img-2"
-              alt="Background"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/ca85bd4195c3967cf9597af5d7101f3f1cf8777bf80cb8a91b2c6be32dcc5905?placeholderIfAbsent=true&apiKey=6de64210dad5440294bfb16468effd24"
+              alt="Google Icon"
+              className="google-icon"
             />
-            <div className="hint-1">
-              <div className="welcome-back">Welcome Back!</div>
-              <div className="please-sign-in-to-your-account-with-the-given-details-to-continue">
-                Please sign in to your
-                account with the given
-                <br />
-                details to continue
+            <span>Sign in with Google</span>
+          </div>
+
+          <form className="login-form" onSubmit={onFinish}>
+            <label className="label">Email</label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="input-field"
+              required
+            />
+
+            <label className="label">Password</label>
+            <input
+              type="password"
+              placeholder="Minimum 8 characters"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="input-field"
+              required
+            />
+
+            {error && <div className="error-message">{error}</div>}
+
+            <div className="forgot-password">
+              <Link to="/forgot-password">Forgot password?</Link>
+            </div>
+
+            <button className="login-button" type="submit">
+              Sign In
+            </button>
+          </form>
+
+          <div className="register-link">
+            Not registered yet? <Link to="/signup">Create a new account</Link>
+          </div>
+        </div>
+
+        {/* Right Panel (Side Image and Text) */}
+        <div className="side-panel">
+          <div className="side-image-wrapper">
+            <img
+              src="https://images.pexels.com/photos/6169180/pexels-photo-6169180.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Background"
+              className="side-image"
+            />
+            <div className="welcome-text">
+              <h3>Welcome Back!</h3>
+              <p>Please sign in to your account with the given details to continue</p>
+              <div className="new-account-text">
+                New here? <Link to="/signup">Create a new account</Link>
               </div>
-              <div className="new-here-create-a-new-account">
-                New here? create a new account
-              </div>
-              <Link to="/signup">
-                <button className="div-15">Sign Up</button>
-              </Link>
             </div>
           </div>
         </div>

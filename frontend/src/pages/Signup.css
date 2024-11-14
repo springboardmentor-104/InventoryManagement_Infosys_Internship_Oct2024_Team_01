@@ -1,20 +1,22 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-}
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f5f5f5;
-}
-
 .container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
+  margin: 0;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid #e1e1e1;
+  box-sizing: border-box;
 }
 
 .left-panel {
@@ -24,27 +26,13 @@ body {
   align-items: center;
   color: rgb(255, 255, 255);
   position: relative;
-  overflow: hidden; 
-  font-weight: bold;
-}
-
-.left-panel::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background: url('./images/image.png') center/cover no-repeat;
-  filter: blur(3px); 
-  z-index: -1;
 }
-
 
 .left-panel .overlay {
-  padding: 40px;
+  padding: 100px;
   text-align: center;
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .left-panel h1 {
@@ -67,88 +55,50 @@ body {
   border-radius: 25px;
 }
 
-.sign-in-btn:hover {
-  background-color: #5189a1;
-}
-
 .right-panel {
   width: 50%;
-  padding: 20px;
   background-color: #fff;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 .right-panel-form {
-  margin-left: 50px;
-  margin-top: 30px;
-  padding : 10px;
-  width:500px;
-  height: 500px;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 30px;
-  border: 1px solid rgba(0, 0, 0, 1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.459);
-  
-}
-
-.logo {
-  display: flex;
-  justify-content: right;
-  font-size: 2.5rem;
-  font-weight: bold;
+  max-width: 500px;
+  width: 100%;
 }
 
 .right-panel h3 {
-  color: #000000;
+  color: #000;
   font-size: 30px;
-  margin-top: 10px;
-  font-weight: light;
+  margin: 0;
 }
 
 .right-panel p {
-  font-size: 14px;
+  font-size: 12px;
   color: #555;
-  margin-bottom: 10px;
+  margin: 5px 0;
 }
 
-.signup-form {
-  margin-top: 1px;
-}
-
-.input-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+.signup-form .label {
   font-size: 14px;
-}
-
-.input-field {
-  font : bold;
-  font-size: 14px;
-  width: 48%;
-}
-
-.input-field label {
-  color: #000000;
-  display: block;
+  color: #000;
   margin-bottom: 5px;
+  display: block;
 }
 
-.input-field input {
-  width: 100%;
-  height: 35px;
-  padding: 10px;
+.signup-form .input-field {
+  width: 80%;
+  padding: 8px;
+  margin-bottom: 15px;
   color: #575151;
   border: 1px solid #ccc;
-  background-color: rgba(237, 240, 242, 1);
   border-radius: 5px;
+  background-color: rgba(237, 240, 242, 1);
 }
 
 .terms {
   display: flex;
   align-items: center;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .terms input {
@@ -156,54 +106,44 @@ body {
 }
 
 .sign-up-btn {
-  display: flex;
-  justify-content: center;
-  text-align: center;
+  display: block;
   background-color: #023246;
   color: white;
   border: none;
-  padding: 8px 20px;
+  padding: 10px;
   font-size: 14px;
   cursor: pointer;
   border-radius: 25px;
-  width: 30%;
+  width: 40%;
+  text-align: center;
 }
 
 .sign-up-btn:hover {
   background-color: #5189a1;
 }
 
-.login-text {
-  margin-top: 20px;
-}
-
-.login-text a {
-  color:#000000;
-}
-
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
+    align-items: center;
   }
-  
+
+  .card-container {
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+  }
+
   .left-panel, .right-panel {
     width: 100%;
   }
 
-  .left-panel {
-    height: 50vh;
-  }
-
-  .right-panel {
-    padding: 20px;
-  }
-
-  .input-row {
-    flex-direction: column;
-  }
-
   .input-field {
-    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
+
+  .sign-up-btn {
+    width: 30%;
+  }
 }

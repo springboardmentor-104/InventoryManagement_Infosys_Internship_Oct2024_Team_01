@@ -1,465 +1,178 @@
-/* src/pages/Login.css */
-.desktop-1 {
-  background-color: rgba(255, 255, 255, 1);
-  padding-left: 52px;
-  overflow: hidden;
-}
-
-@media (max-width: 991px) {
-  .desktop-1 {
-    padding-left: 20px;
-  }
-}
-
-.div {
-  gap: 110px;
+/* Overall Page Styling */
+.login-page {
   display: flex;
-  height: fit-content;
-}
-
-@media (max-width: 991px) {
-  .div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0px;
-  }
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 45%;
-  margin-left: 0;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  align-items: center; 
-  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5;
+  padding: 0px; /* Padding added outside the container */
+  margin-top:20px;
+  margin-bottom:20px;
 }
 
-@media (max-width: 991px) {
-  .column {
-    width: 100%;
-  }
-}
-
-.div-2 {
+/* Card Container Styling */
+.card-container {
   display: flex;
-  flex-direction: column;
-  align-self: stretch;
-  margin: auto;
-}
-
-@media (max-width: 991px) {
-  .div-2 {
-    max-width: 100%;
-    margin-top: 5px;
-  }
-}
-
-.div-3 {
-  border-radius: 30px;
-  align-self: center;
-  display: flex;
-  margin-top: 30px;
-  width: 430px;
-  height: 520px;
-  max-width: 80%;
-  flex-direction: column;
-  overflow: hidden;
-  font-family: 'Roboto', sans-serif;
-  padding: 52px 60px 81px;
-  border: 1px solid rgba(0, 0, 0, 1);
-  margin-left: 70px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.459);
-}
-
-@media (max-width: 991px) {
-  .div-3 {
-    margin-top: 40px;
-    padding: 0 20px;
-    align-self: center;
-  }
-}
-
-.div-4 {
-  align-self: center;
-  display: flex;
-  margin-right: 0;
-  width: 100%;
-  max-width: 280px;
-  flex-direction: column;
-  font-size: 48px;
-  color: rgba(0, 0, 0, 1);
-  font-weight: 500;
-  white-space: nowrap;
-  justify-content: center;
-  padding: 10px;
-  font-family: 'Roboto', sans-serif;
-}
-
-@media (max-width: 991px) {
-  .div-4 {
-    font-size: 30px;
-    align-self: center;
-    max-width: 100%;
-  }
-}
-
-.div-5 {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.login {
-}
-
-@media (max-width: 991px) {
-  .login {
-    font-size: 40px;
-  }
-}
-
-.div-6 {
-  border-radius: 0;
-  align-self: start;
-  display: flex;
-  min-height: 0;
-  margin-top: 30px;
-  max-width: 100%;
-}
-
-.input-collection {
-  display: flex;
-  margin-top: 1px;
-  min-height: 530px;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 10px 10px 41px;
-}
-
-@media (max-width: 991px) {
-  .input-collection {
-    max-width: 100%;
-  }
-}
-
-.google-button {
-  border-radius: 50px;
-  align-self: stretch;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 1);
-  font-weight: 400;
-  justify-content: center;
-  padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 1);
-}
-
-.sign-in-with-google {
-  align-self: stretch;
-  margin: auto 0;
-}
-.div-7 {
-  display: flex;
-  margin-top: 15px;
-  max-width: 100%;
-  width: 410px;
-  flex-direction: column;
-  font-weight: 400;
-}
-
-.div-8 {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1px;
-}
-
-.email {
-  color: rgba(16, 21, 64, 1);
-  font-size: 14px;
-}
-
-.enter-you-email {
-  align-self: stretch;
-  border-radius: 5px;
-  background-color: rgba(237, 240, 242, 1);
-  margin-top: 2px;
-  height: 14px;
-  width: 100%;
-  gap: 10px;
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.68);
-  padding: 19px 10px;
-  border: 1px solid rgba(143, 143, 143, 1);
-}
-
-.div-9 {
-  display: flex;
-  margin-top: 5px;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1px;
-}
-
-.div-10 {
-  display: flex;
-  margin-top: 10px;
-  max-width: 410px;
-  font-size: 14px;
-  align-self: center;
-}
-
-.div-11 {
-  border-radius: 5px;
-  align-self: stretch;
-  display: flex;
-  gap: 16px;
-  color: rgba(0, 0, 0, 1);
-  font-weight: 400;
-  width: 160px;
-  margin: auto 0;
-}
-
-.div-12 {
-  border-radius: 5px;
-  display: flex;
-  width: 24px;
-  height: 24px;
-  border: 1px solid rgba(0, 0, 0, 1);
-}
-
-.remember-me {
-  flex-basis: auto;
-}
-
-.forgot-password {
-  color: rgba(16, 21, 64, 1);
-  font-weight: 500;
-  align-self: stretch;
-  margin: auto 0;
-  font-family: 'Roboto', sans-serif;
-}
-
-.div-13 {
-  border-radius: 500px;
-  background-color: #023246;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-  width: 202px;
-  max-width: 100%;
-  padding: 10px 20px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 1);
-  font-weight: 400;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  border: none;
-  align-self: center;
-}
-
-.div-13:hover {
-  background-color: #5189a1;
-}
-
-.export-to-excel {
-  align-self: stretch;
-  width: 172px;
-  border-radius: 5px;
-  min-height: 56px;
-  gap: 10px;
-  padding: 10px 15px;
-  border: 1px solid rgba(0, 0, 0, 1);
-}
-
-.not-regestered-yet-create-a-new-account {
-  margin-top: 15px;
-  align-content: center;
-  font-size: 16px;
-  color: rgb(0, 0, 0);
-  font-weight: 500;
-  padding: 10px;
-}
-
-.column-2 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 55%;
-  margin-left: 20px;
-}
-
-@media (max-width: 991px) {
-  .column-2 {
-    width: 100%;
-  }
-}
-
-.div-14 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  flex-grow: 1;
-  color: rgb(255, 255, 255);
-  font: 'Roboto', sans-serif;
-  font-size: 14;
-}
-
-@media (max-width: 991px) {
-  .div-14 {
-    max-width: 100%;
-    margin-top: 40px;
-  }
-}
-
-.img-2 {
-  position: absolute;
-  inset: 0;
+  justify-content: space-between;
+  width: 700px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   height: 100%;
+  overflow: hidden;
+}
+
+/* Left Panel (Login Form) Styling */
+.login-panel {
+  padding: 30px;
+  max-width: 400px;
   width: 100%;
-  object-fit: cover;
-  object-position: center;
-  background-size: cover;
-  filter: blur(3px);
 }
 
-.hint-1 {
-  position: relative;
-  margin-top: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-}
-
-@media (max-width: 991px) {
-  .hint-1 {
-    max-width: 100%;
-    padding: 100px 0;
-  }
-}
-
-.welcome-back {
-  font-size: 53px;
-  font-weight: 700;
-  font-family: 'Roboto', sans-serif;
-}
-
-@media (max-width: 991px) {
-  .welcome-back {
-    max-width: 100%;
-    font-size: 40px;
-  }
-}
-
-.please-sign-in-to-your-account-with-the-given-details-to-continue {
-  text-align: center;
-  margin-top: 19px;
-  font-size: 18px;
-  font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-}
-
-.new-here-create-a-new-account {
-  text-align: center;
-  margin-top: 19px;
-  font-family: 'Roboto', sans-serif;
-}
-
-@media (max-width: 991px) {
-  .new-here-create-a-new-account {
-    max-width: 100%;
-  }
-}
-
-.div-15 {
-  margin-top: 10px;
-  width: 200px;
-  height: 40px;
-  border-radius: 50px;
-  background-color: #023246;
-  font-size: medium;
-  color: white;
-  border: none;
-  cursor: pointer;
-  align-items: center;
-  transition: background-color 0.3s ease;
-}
-
-.div-15:hover {
-  background-color: #5189a1;
-}
-
-.export-to-excel-2 {
-  align-self: stretch;
-  width: 172px;
-  border-radius: 5px;
-  min-height: 56px;
-  gap: 10px;
-  padding: 4px 15px;
-  border: 1px solid rgba(0, 0, 0, 1);
-}
-
-.img-2 {
-  background: url(./images/images.jpg);
-  height: 100vh;
-}
-.sign-in-with-google-container {
-  display: flex;
-  align-items: center;
-}
-
-.google-icon-button {
+/* Google Button Styling */
+.google-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #023246;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  margin-bottom: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-right: 10px;
 }
 
-.google-icon-button:hover {
-  background-color: #394c55;
+.google-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .google-icon {
-  width: 24px; 
-  height: 24px; 
+  width: 20px;
+  height: 20px;
 }
 
-.sign-in-with-google {
-  color: rgb(0, 0, 0); 
-  font-size: 14px;
-}
-.role-selection {
-  display: flex;
-  gap: 20px; /* Space between the radio buttons */
-  margin-bottom: 20px; /* Space below the radio buttons */
+/* Form Styling */
+.login-form {
+  width: 100%;
 }
 
-.role-selection label {
+.label {
   font-size: 14px;
   color: rgba(16, 21, 64, 1);
+  margin-bottom: 5px;
+  display: block;
 }
-.role-selection {
+
+.input-field {
   display: flex;
-  gap: 20px; /* Space between the buttons */
-  margin-bottom: 20px; /* Space below the buttons */
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid rgba(143, 143, 143, 1);
+  margin-bottom: 20px;
+  background-color: rgba(237, 240, 242, 1);
+}
+
+.forgot-password {
+  text-align: right;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-button {
+  background-color: #023246;
+  color: #fff;
+  font-size: 16px;
+  padding: 12px 0;
+  border-radius: 30px;
+  border: none;
+  width: 100%;
+  max-width: 200px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #5189a1;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.register-link {
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  margin-top: 10px;
+  text-align: center;
+}
+
+.register-link a {
+  color: #023246;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Side Panel Styling */
+/* Side Panel Styling */
+.side-panel {
+  position: relative;
+  width: 400px;
+  height: 100%; /* Full height of the container */
+  
+}
+
+.side-image-wrapper {
+  position: relative;
+  height: 100%; /* Full height of the container */
+}
+
+.side-image {
+  width: 400px;
+  height: 100%;
+  object-fit: cover;
 }
 
 
+.welcome-text {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.welcome-text h3 {
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 150px;
+}
+
+.welcome-text p {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-right:30px;
+}
+
+.new-account-text {
+  font-size: 14px;
+
+}
