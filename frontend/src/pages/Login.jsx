@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import './Login.css';
 import { Link } from 'react-router-dom';
@@ -9,22 +10,31 @@ const Login = () => {
   const [error, setError] = useState(null);
 
   const onFinish = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        `http://localhost:4000/api/users/login`,
-        { email, password },
-        { headers: { 'Content-Type': 'application/json' } }
-      );
-      const { token } = response.data;
-      localStorage.setItem('token', token);
-      window.location.href = '/admin/dashboard';
-    } catch (err) {
-      console.log(err.response);
-      setError('Invalid credentials. Please try again.');
-    }
+      e.preventDefault();
+  
+      try {
+          const response = await axios.post(
+              `http://localhost:4000/api/users/login`,
+              { email, password },
+              { headers: { 'Content-Type': 'application/json' } }
+          );
+          const { token } = response.data;
+          localStorage.setItem('token', token);
+  
+          const decodedToken = jwtDecode(token);
+          const userRole = decodedToken.role;
+  
+          if (userRole === 'admin') {
+              window.location.href = '/admin/dashboard';
+          } else {
+              window.location.href = '/user/dashboard';
+          }
+      } catch (err) {
+          console.log(err.response);
+          setError('Invalid credentials. Please try again.');
+      }
   };
+  
 
   return (
     <div className="desktop-1">

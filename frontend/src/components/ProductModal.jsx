@@ -39,7 +39,7 @@ const ProductModal = ({ product, isOpen, onClose, onSave }) => {
         // Fetch categories from the backend
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/categories'); // Assuming you have this route
+                const response = await axios.get('http://localhost:4000/api/categories');
                 setCategories(response.data);
             } catch (error) {
                 console.error("Failed to fetch categories:", error);

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import './ProductsPage.css'; // Assuming your CSS is in ProductsPage.css
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -8,12 +8,17 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/api/products'); // Adjust the API endpoint as needed
-        if (!response.ok) {
+        const response = await axios.get('http://localhost:4000/api/products', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+
+        if (response.status !== 200) {
           throw new Error('Failed to fetch products');
         }
-        const data = await response.json();
-        setProducts(data); // Set the products from the backend
+
+        setProducts(response.data); // Set the products from the backend
       } catch (err) {
         setError(err.message);
         // If there's an error, set products with null values
