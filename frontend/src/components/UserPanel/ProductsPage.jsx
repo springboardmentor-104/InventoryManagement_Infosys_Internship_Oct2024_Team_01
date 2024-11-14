@@ -8,20 +8,18 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/products', {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
         });
-
+        
         if (response.status !== 200) {
           throw new Error('Failed to fetch products');
         }
-
-        setProducts(response.data); // Set the products from the backend
+        setProducts(response.data);
       } catch (err) {
         setError(err.message);
-        // If there's an error, set products with null values
         setProducts([
           { id: 1, name: null, price: null, image: null }
         ]);
