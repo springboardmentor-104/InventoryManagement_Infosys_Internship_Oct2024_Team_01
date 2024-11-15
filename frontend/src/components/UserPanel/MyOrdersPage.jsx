@@ -9,7 +9,7 @@ const MyOrdersPage = () => {
     // Fetching orders from the backend
     const fetchOrders = async () => {
       try {
-        const response = await fetch('/api/orders'); // Adjust the endpoint as needed
+        const response = await fetch('http://localhost:4000/api/orders'); // Updated URL with port 4000
         if (!response.ok) {
           throw new Error('Failed to fetch orders');
         }
@@ -30,32 +30,33 @@ const MyOrdersPage = () => {
   }
 
   if (error) {
-    return <div>Error: </div>;
+    return <div>Error: {error}</div>; // Display error message
   }
 
   return (
     <div className="orders-container">
       <h2>Your Orders</h2>
-      <table className="orders-table">
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map((order) => (
-            <tr key={order.id}>
-              <td>{order.id}</td>
-              <td>{order.date}</td>
-              <td>{order.status}</td>
-              <td>${order.total.toFixed(2)}</td>
+      {orders.length > 0 ? (
+        <table className="orders-table">
+          <thead>
+            <tr>
+              <th>Order ID</th><th>Date</th><th>Status</th><th>Total</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {orders.map((order) => (
+              <tr key={order.id}>
+                <td>{order.id}</td>
+                <td>{new Date(order.date).toLocaleDateString()}</td> {/* Format date */}
+                <td>{order.status}</td>
+                <td>${order.total.toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No orders found.</p> // Handle empty orders
+      )}
     </div>
   );
 };

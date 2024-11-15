@@ -21,6 +21,7 @@ import HomePage from './pages/HomePage.jsx';
 import Login from './pages/Login.jsx';
 import ResetPass from './pages/ResetPass.jsx';
 import Signup from './pages/Signup.jsx';
+import Logout from './components/UserPanel/Logout.jsx'; // Add this import
 
 import './style.css';
 import ProductList from './pages/ProductList.jsx';
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPass />} />
+          <Route path="/logout" element={<Logout />} /> {/* Relative path under /user */}
 
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminLayout />}>
@@ -47,10 +49,12 @@ const App = () => {
 
           {/* User Routes */}
           <Route path="/user" element={<UserLayout />}>
-            <Route path="dashboard" element={<UserDashboard/>} />
+            <Route path="dashboard" element={<UserDashboard />} />
             <Route path="products" element={<ProductsPageUser />} />
             <Route path="my-orders" element={<MyOrdersPage />} />
             <Route path="cart" element={<CartPage />} />
+            <Route path="logout" element={<Logout />} /> {/* Relative path under /user */}
+
           </Route>
         </Routes>
       </Router>
