@@ -6,6 +6,10 @@ const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
 
+  const getImageUrl = (imagePath) => {
+    return `${process.env.REACT_APP_BACKEND_URL}/${imagePath}`;
+};
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -38,8 +42,8 @@ const ProductsPage = () => {
         {products.map((product) => (
           <div key={product.id} className="product-card">
             <img 
-              src={product.image || 'placeholder.jpg'} 
-              alt={product.name || 'No Image Available'} 
+              src={getImageUrl(product.images[0])}
+              alt={product.name}
             />
             <h4>{product.name || 'N/A'}</h4>
             <p>${product.price !== null ? product.price.toFixed(2) : 'N/A'}</p>
