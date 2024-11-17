@@ -12,9 +12,11 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_BACKEND_URL}/api/products/${productId}`
-        );
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products/${productId}`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
 
         if (response.status !== 200) {
           throw new Error('Failed to fetch product details');

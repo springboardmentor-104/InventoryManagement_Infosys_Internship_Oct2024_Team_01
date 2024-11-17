@@ -40,7 +40,7 @@ const ProductsPage = () => {
         {products.map((product) => (
           <Link 
             key={product.id} 
-            to={`/user/products/${product.id}`} 
+            to={`/user/products/${product._id}`} 
             className="product-link"
           >
             <div className="product-card">
