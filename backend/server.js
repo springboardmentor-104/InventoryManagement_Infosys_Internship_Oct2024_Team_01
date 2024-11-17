@@ -9,7 +9,7 @@ const categoryRoutes = require('./routes/categoryRoutes');
 const imageRoutes = require('./routes/imageRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const orderRoutes = require('./routes/orderRoutes');
-// const dashboardRoutes = require('./routes/dashboardRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
 
 
 const app = express();
@@ -29,7 +29,7 @@ app.use('/api/products', productRoutes, imageRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
-// app.use('/api/dashboard', dashboardRoutes)
+app.use('/api/dashboard', dashboardRoutes)
 
 // Serve the uploaded images as static files
 app.use('/uploads', express.static('uploads')); 
