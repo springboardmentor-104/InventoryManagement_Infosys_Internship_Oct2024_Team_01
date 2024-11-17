@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: white;
+    width: fit-content;
 }
 
 .product-card:hover {

@@ -13,6 +13,7 @@ import UserDashboard from './components/UserPanel/UserDashboard.jsx';
 import ProductsPageUser from './components/UserPanel/ProductsPage.jsx';
 import MyOrdersPage from './components/UserPanel/MyOrdersPage.jsx';
 import CartPage from './components/UserPanel/CartPage.jsx';
+import ProductDetails from './components/UserPanel/ProductDetails.jsx';
 import UserLayout from './layouts/UserLayout.jsx';
 
 // Other Pages
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="dashboard" element={<UserDashboard/>} />
             <Route path="products" element={<ProductsPageUser />} />
             <Route path="my-orders" element={<MyOrdersPage />} />
+            <Route path="products/:productId" element={<ProductDetails />} />
             <Route path="cart" element={<CartPage />} />
           </Route>
         </Routes>

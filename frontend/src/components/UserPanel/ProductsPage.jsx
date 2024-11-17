@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './ProductsPage.css';
 
 const ProductsPage = () => {
@@ -8,15 +9,15 @@ const ProductsPage = () => {
 
   const getImageUrl = (imagePath) => {
     return `${process.env.REACT_APP_BACKEND_URL}/${imagePath}`;
-};
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products`, {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          },
         });
 
         if (response.status !== 200) {
@@ -26,9 +27,6 @@ const ProductsPage = () => {
         setProducts(response.data);
       } catch (err) {
         setError(err.message);
-        setProducts([
-          { id: 1, name: null, price: null, image: null }
-        ]);
       }
     };
 
@@ -40,15 +38,25 @@ const ProductsPage = () => {
       <h2>Products</h2>
       <div className="product-list">
         {products.map((product) => (
-          <div key={product.id} className="product-card">
-            <img 
-              src={getImageUrl(product.images[0])}
-              alt={product.name}
-            />
-            <h4>{product.name || 'N/A'}</h4>
-            <p>${product.price !== null ? product.price.toFixed(2) : 'N/A'}</p>
-            <button>Add to Cart</button>
-          </div>
+          <Link 
+            key={product.id} 
+            to={`/user/products/${product.id}`} 
+            className="product-link"
+          >
+            <div className="product-card">
+              {product.images && product.images.length > 0 ? (
+                <img 
+                  src={getImageUrl(product.images[0])} 
+                  alt={product.name || 'Product'} 
+                />
+              ) : (
+                <div className="no-image">No Image</div>
+              )}
+              <h4>{product.name || 'N/A'}</h4>
+              <p>${product.price !== null ? product.price.toFixed(2) : 'N/A'}</p>
+              <button>Add to Cart</button>
+            </div>
+          </Link>
         ))}
       </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
