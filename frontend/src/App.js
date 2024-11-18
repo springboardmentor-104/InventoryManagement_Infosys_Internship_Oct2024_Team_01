@@ -22,6 +22,7 @@ import UserLayout from './layouts/UserLayout.jsx';
 import ForgotPassword from './pages/ForgotPassword.jsx';
 import HomePage from './pages/HomePage.jsx';
 import Login from './pages/Login.jsx';
+import Logout from './components/Logout.jsx';
 import ResetPass from './pages/ResetPass.jsx';
 import Signup from './pages/Signup.jsx';
 
@@ -36,6 +37,7 @@ const App = () => {
           {/* Public Routes */}
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPass />} />

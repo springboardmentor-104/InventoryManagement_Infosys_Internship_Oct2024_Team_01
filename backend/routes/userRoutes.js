@@ -1,5 +1,5 @@
 const express = require('express');
-const { register, login, verifyOtp, resendOtp, forgotPassword, resetPassword} = require('../controllers/userController');
+const { register, login, logout, verifyOtp, resendOtp, forgotPassword, resetPassword} = require('../controllers/userController');
 const { verifyToken, isAdmin } = require('../middlewares/authMiddleware');
 const validateOtpInput = require('../middlewares/validateOtp');
 // const dashboardController = require('../controllers/dashboardController');
@@ -11,6 +11,9 @@ router.post('/register', register);
 
 // Login Endpoint
 router.post('/login', login);
+
+// Logout route
+router.post('/logout', verifyToken, logout);
 
 // OTP verification route
 router.post('/verify-otp', validateOtpInput, verifyOtp);

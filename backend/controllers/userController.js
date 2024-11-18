@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const User = require('../models/user'); 
-const { createToken } = require('../utils/jwt');
+const { createToken, verifyToken, decodeToken } = require('../utils/jwt');
 const { sendEmail }= require('../config/mailer');
 const { generateResetToken } = require('../utils/passwordReset');
 
@@ -224,3 +224,34 @@ exports.resendOtp = async (req, res) => {
     }
 };
 
+
+// Logout Logic
+let blacklist = []; // In-memory blacklist; replace with Redis for production
+exports.blacklist = blacklist;
+
+exports.logout = (req, res) => {
+    const { token } = req.body;
+
+    if (!token) {
+        return res.status(400).json({ message: "Token is required for logout" });
+    }
+
+    try {
+        const decoded = decodeToken(token);
+        if (!decoded) {
+            return res.status(400).json({ message: "Invalid token" });
+        }
+
+        const currentTime = Math.floor(Date.now() / 1000);
+        const ttl = decoded.exp - currentTime;
+
+        if (ttl > 0) {
+            blacklist.push({ token, exp: decoded.exp });
+        }
+
+        res.status(200).json({ message: "Successfully logged out" });
+    } catch (error) {
+        console.error(error);
+        res.status(401).json({ message: "Failed to logout" });
+    }
+};
