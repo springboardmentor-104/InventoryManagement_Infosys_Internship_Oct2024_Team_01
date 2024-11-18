@@ -4,60 +4,55 @@ import { Link } from 'react-router-dom';
 import './CartPage.css';
 
 const CartPage = () => {
-  const [cart, setCart] = useState([]);  // Initialize with empty array
+  const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchCart = async () => {
-      try {
-        const token = localStorage.getItem('token'); // Ensure token is fetched here
+  const fetchCart = async () => {
+    setLoading(true);
+    try {
+        const token = localStorage.getItem('token');
         if (!token) {
           setError('Please log in to view your cart');
           setLoading(false);
           return;
         }
 
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/cart`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
-
-        if (response.status === 200) {
-          // If cart is empty, set it to an empty array
-          setCart(response.data.products || []); 
-        } else {
-          throw new Error('Failed to load cart');
-        }
-      } catch (err) {
-        setError(err.response?.data?.message || err.message);
-        setCart([]); // Ensure cart is empty in case of error
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCart();
-  }, []);
-
-  const removeItemFromCart = async (productId) => {
-    try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        setError('Please log in to remove items from the cart');
-        return;
-      }
-
-      const response = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/cart/${productId}`, {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/cart`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
       });
 
+      if (response.data?.products) {
+        setCart(response.data.products);
+      } else {
+        setCart([]);
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || err.message);
+      setCart([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
+
+  const removeItemFromCart = async (productId) => {
+    try {
+      const response = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/cart/${productId}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
       if (response.status === 200) {
-        // Remove item locally from state
-        setCart(cart.filter(item => item.productId !== productId));
+        setCart(cart.filter(item => item.productId._id !== productId));
+
+        fetchCart();
       } else {
         throw new Error('Failed to remove item');
       }
@@ -67,10 +62,14 @@ const CartPage = () => {
   };
 
   const total = cart.reduce((sum, item) => {
-    const price = item.price || 0;
+    const price = item.productId.price || 0;
     const quantity = item.quantity || 0;
     return sum + (price * quantity);
   }, 0);
+
+  const getImageUrl = (imagePath) => {
+    return `${process.env.REACT_APP_BACKEND_URL}/${imagePath}`;
+  };
 
   return (
     <div className="cart-page">
@@ -80,15 +79,25 @@ const CartPage = () => {
       <div className="cart-items">
         {cart.length > 0 ? (
           cart.map((item) => (
-            <div key={item.productId} className="cart-item">
+            <div key={item.productId._id} className="cart-item">
+              <div className="item-image">
+                {item.productId.images && item.productId.images.length > 0 ? (
+                  <img
+                    src={getImageUrl(item.productId.images[0])}
+                    alt={item.productId.name || 'Product'}
+                  />
+                ) : (
+                  <div className="no-image">No Image</div>
+                )}
+              </div>
               <div className="item-info">
-                <p>{item.name || 'N/A'}</p>
-                <p>${item.price !== null && item.price !== undefined ? item.price.toFixed(2) : 'N/A'}</p>
-                <p>Quantity: {item.quantity !== null && item.quantity !== undefined ? item.quantity : 'N/A'}</p>
+                <p>{item.productId.name || 'N/A'}</p>
+                <p>${item.productId.price !== null ? item.productId.price.toFixed(2) : 'N/A'}</p>
+                <p>Quantity: {item.quantity !== null ? item.quantity : 'N/A'}</p>
               </div>
               <div className="item-actions">
-                <p>Total: ${item.price && item.quantity ? (item.price * item.quantity).toFixed(2) : 'N/A'}</p>
-                <button className="remove-btn" onClick={() => removeItemFromCart(item.productId)}>Remove</button>
+                <p>Total: ${item.productId.price && item.quantity ? (item.productId.price * item.quantity).toFixed(2) : 'N/A'}</p>
+                <button className="remove-btn" onClick={() => removeItemFromCart(item.productId._id)}>Remove</button>
               </div>
             </div>
           ))

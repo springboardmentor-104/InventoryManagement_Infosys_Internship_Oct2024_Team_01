@@ -4,7 +4,9 @@ const Product = require('../models/Product');
 // Get cart items
 exports.getCart = async (req, res) => {
   try {
-    const cart = await Cart.findOne({ user: req.userId }).populate('products.productId');
+    const cart = await Cart.findOne({ user: req.userId })
+      .populate('products.productId', 'name price images')
+      .exec();
     if (!cart) return res.status(404).json({ message: 'Cart is empty' });
     res.status(200).json(cart);
   } catch (error) {
@@ -66,12 +68,12 @@ exports.updateCartItem = async (req, res) => {
 // Remove item from cart
 exports.removeFromCart = async (req, res) => {
   try {
-    const { itemId } = req.params;
+    const { productId } = req.params;
 
     const cart = await Cart.findOne({ user: req.userId });
     if (!cart) return res.status(404).json({ message: 'Cart not found' });
 
-    cart.products = cart.products.filter(item => item._id.toString() !== itemId);
+    cart.products = cart.products.filter(item => item.productId.toString() !== productId);
     await cart.save();
 
     res.status(200).json(cart);
