@@ -1,36 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const MyOrdersPage = () => {
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true); // To handle loading state
-  const [error, setError] = useState(null); // To handle errors
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetching orders from the backend
     const fetchOrders = async () => {
       try {
-        const response = await fetch('/api/orders'); // Adjust the endpoint as needed
-        if (!response.ok) {
-          throw new Error('Failed to fetch orders');
-        }
-        const data = await response.json(); // Assuming the response is JSON
-        setOrders(data);
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/orders`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          }
+        });
+        setOrders(response.data);
       } catch (err) {
-        setError(err.message);
+        setError(err.response?.data?.message || err.message);
       } finally {
         setLoading(false);
       }
     };
 
     fetchOrders();
-  }, []); // Empty dependency array means this effect runs only once when the component mounts
+  }, []);
 
   if (loading) {
     return <div>Loading orders...</div>;
   }
 
   if (error) {
-    return <div>Error: </div>;
+    return <div>Error: {error}</div>;
   }
 
   return (

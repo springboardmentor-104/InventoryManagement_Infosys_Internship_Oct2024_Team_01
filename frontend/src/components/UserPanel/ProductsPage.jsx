@@ -6,6 +6,7 @@ import './ProductsPage.css';
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [cartMessage, setCartMessage] = useState('');
 
   const getImageUrl = (imagePath) => {
     return `${process.env.REACT_APP_BACKEND_URL}/${imagePath}`;
@@ -33,9 +34,29 @@ const ProductsPage = () => {
     fetchProducts();
   }, []);
 
+// Function to handle adding product to the cart
+const addToCart = async (productId) => {
+  const quantity = 1;
+
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/api/cart`,
+      { productId, quantity },
+      { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+    );
+
+    if (response.status === 200) {
+      setCartMessage('Product added to cart!');
+    }
+  } catch (error) {
+    setCartMessage('Error adding product to cart');
+  }
+};
+
   return (
     <div className="products-container">
       <h2>Products</h2>
+      {cartMessage && <p>{cartMessage}</p>} {/* Show feedback message */}
       <div className="product-list">
         {products.map((product) => (
           <Link 
@@ -54,7 +75,7 @@ const ProductsPage = () => {
               )}
               <h4>{product.name || 'N/A'}</h4>
               <p>${product.price !== null ? product.price.toFixed(2) : 'N/A'}</p>
-              <button>Add to Cart</button>
+              <button onClick={() => addToCart(product._id)}>Add to Cart</button>
             </div>
           </Link>
         ))}
