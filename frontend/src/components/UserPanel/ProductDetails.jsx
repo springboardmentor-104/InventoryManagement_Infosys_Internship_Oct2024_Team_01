@@ -9,15 +9,20 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cartMessage, setCartMessage] = useState(''); // To show cart message
+  const [loadingCart, setLoadingCart] = useState(false); // To disable button while loading
 
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products/${productId}`, {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-          },
-        });
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/api/products/${productId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          }
+        );
 
         if (response.status !== 200) {
           throw new Error('Failed to fetch product details');
@@ -34,14 +39,45 @@ const ProductDetails = () => {
     fetchProductDetails();
   }, [productId]);
 
-  const handleAddToCart = () => {
-    // Logic for adding product to cart
-    alert(`${product.name} added to cart!`);
+  const handleAddToCart = async () => {
+    setLoadingCart(true);
+    const token = localStorage.getItem('token'); // Ensure token is available for cart request
+
+    if (!token) {
+      setCartMessage('You need to log in to add items to the cart.');
+      setLoadingCart(false);
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/cart`,
+        {
+          productId,
+          quantity: 1, // You can modify this if you want users to select quantity
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        setCartMessage('Product added to cart successfully!');
+      }
+    } catch (error) {
+      setCartMessage('Error adding product to cart.');
+    } finally {
+      setLoadingCart(false);
+
+      // Clear the message after 3 seconds
+      setTimeout(() => setCartMessage(''), 3000);
+    }
   };
 
   const handleViewCart = () => {
-    // Navigate to cart page
-    navigate('/cart');
+    navigate('/user/cart'); // Navigate to the cart page
   };
 
   if (loading) {
@@ -58,7 +94,9 @@ const ProductDetails = () => {
 
   return (
     <div className="product-details-page">
-      <button className="back-button" onClick={() => navigate(-1)}>← Back to products</button>
+      <button className="back-button" onClick={() => navigate(-1)}>
+        ← Back to products
+      </button>
       <div className="product-header">
         <img
           src={`${process.env.REACT_APP_BACKEND_URL}/${product.images?.[0] || 'placeholder.jpg'}`}
@@ -68,14 +106,24 @@ const ProductDetails = () => {
         <div className="product-info">
           <p className="product-name">{product.name}</p>
           <p className="product-price">${product.price?.toFixed(2) || 'N/A'}</p>
-          <p className="product-description">{product.description || 'No description available.'}</p>
+          <p className="product-description">
+            {product.description || 'No description available.'}
+          </p>
           <div className="button-group">
-            <button className="btn add-to-cart" onClick={handleAddToCart}>Add to Cart</button>
-            <button className="btn view-cart" onClick={handleViewCart}>View Cart</button>
+            <button
+              className="btn add-to-cart"
+              onClick={handleAddToCart}
+              disabled={loadingCart} // Disable button while loading
+            >
+              {loadingCart ? 'Adding...' : 'Add to Cart'}
+            </button>
+            <button className="btn view-cart" onClick={handleViewCart}>
+              View Cart
+            </button>
           </div>
+          {cartMessage && <p className="cart-message">{cartMessage}</p>} {/* Show feedback message */}
         </div>
       </div>
-      
     </div>
   );
 };

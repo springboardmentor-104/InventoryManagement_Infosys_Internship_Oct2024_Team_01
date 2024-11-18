@@ -130,3 +130,34 @@
     width: 100%; /* 1 card per row */
   }
 }
+/* Cart message styling for top-right corner */
+.cart-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-size: 14px;
+  font-weight: bold;
+  animation: fadeOut 3s ease-in-out forwards; /* Smooth fade-out effect */
+}
+
+/* Keyframes for fade-out animation */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 0.5;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}

@@ -7,6 +7,7 @@ const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [cartMessage, setCartMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const getImageUrl = (imagePath) => {
     return `${process.env.REACT_APP_BACKEND_URL}/${imagePath}`;
@@ -15,9 +16,15 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          setError("No token found. Please log in.");
+          return;
+        }
+
         const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products`, {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Authorization': `Bearer ${token}`,
           },
         });
 
@@ -27,44 +34,56 @@ const ProductsPage = () => {
 
         setProducts(response.data);
       } catch (err) {
-        setError(err.message);
+        setError(err.response?.data?.message || err.message || 'Failed to load products');
       }
     };
 
     fetchProducts();
   }, []);
 
-// Function to handle adding product to the cart
-const addToCart = async (productId) => {
-  const quantity = 1;
+  const addToCart = async (productId) => {
+    setLoading(true);
+    const quantity = 1;
+    const token = localStorage.getItem('token'); // Ensure token is available for cart request
 
-  try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/api/cart`,
-      { productId, quantity },
-      { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
-    );
-
-    if (response.status === 200) {
-      setCartMessage('Product added to cart!');
+    if (!token) {
+      setCartMessage('You need to log in to add items to the cart.');
+      setLoading(false);
+      return;
     }
-  } catch (error) {
-    setCartMessage('Error adding product to cart');
-  }
-};
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/cart`,
+        { productId, quantity },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      if (response.status === 200) {
+        setCartMessage('Product added to cart successfully!');
+      }
+    } catch (error) {
+      setCartMessage('Error adding product to cart.');
+    } finally {
+      setLoading(false);
+
+      // Clear the message after 3 seconds
+      setTimeout(() => setCartMessage(''), 3000);
+    }
+  };
 
   return (
     <div className="products-container">
       <h2>Products</h2>
-      {cartMessage && <p>{cartMessage}</p>} {/* Show feedback message */}
+      {cartMessage && <p className="cart-message">{cartMessage}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <div className="product-list">
         {products.map((product) => (
-          <Link 
-            key={product.id} 
-            to={`/user/products/${product._id}`} 
-            className="product-link"
-          >
-            <div className="product-card">
+          <div key={product._id} className="product-card">
+            <Link 
+              to={`/user/products/${product._id}`} 
+              className="product-link"
+            >
               {product.images && product.images.length > 0 ? (
                 <img 
                   src={getImageUrl(product.images[0])} 
@@ -75,12 +94,20 @@ const addToCart = async (productId) => {
               )}
               <h4>{product.name || 'N/A'}</h4>
               <p>${product.price !== null ? product.price.toFixed(2) : 'N/A'}</p>
-              <button onClick={() => addToCart(product._id)}>Add to Cart</button>
-            </div>
-          </Link>
+            </Link>
+            <button 
+              className="add-to-cart-button" 
+              onClick={(e) => {
+                e.preventDefault(); // Prevent navigation on click
+                addToCart(product._id);
+              }}
+              disabled={loading} // Disable button while loading
+            >
+              {loading ? 'Adding...' : 'Add to Cart'}
+            </button>
+          </div>
         ))}
       </div>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
 };

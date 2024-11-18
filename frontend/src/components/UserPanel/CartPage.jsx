@@ -1,30 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './CartPage.css';
 
 const CartPage = () => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);  // Initialize with empty array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCart = async () => {
       try {
+        const token = localStorage.getItem('token'); // Ensure token is fetched here
+        if (!token) {
+          setError('Please log in to view your cart');
+          setLoading(false);
+          return;
+        }
+
         const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/cart`, {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Authorization': `Bearer ${token}`,
           },
         });
 
-        // Check if the cart contains products and set the state
-        if (response.data?.products) {
-          setCart(response.data.products); // Use products directly
+        if (response.status === 200) {
+          // If cart is empty, set it to an empty array
+          setCart(response.data.products || []); 
         } else {
-          setCart([]); // Fallback if there are no products
+          throw new Error('Failed to load cart');
         }
       } catch (err) {
         setError(err.response?.data?.message || err.message);
-        setCart([]); // Fallback to empty array if error occurs
+        setCart([]); // Ensure cart is empty in case of error
       } finally {
         setLoading(false);
       }
@@ -35,14 +43,20 @@ const CartPage = () => {
 
   const removeItemFromCart = async (productId) => {
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setError('Please log in to remove items from the cart');
+        return;
+      }
+
       const response = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/cart/${productId}`, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Authorization': `Bearer ${token}`,
         },
       });
 
       if (response.status === 200) {
-        // Remove item from the cart UI based on productId
+        // Remove item locally from state
         setCart(cart.filter(item => item.productId !== productId));
       } else {
         throw new Error('Failed to remove item');
@@ -52,7 +66,6 @@ const CartPage = () => {
     }
   };
 
-  // Calculate the total cost of all items in the cart
   const total = cart.reduce((sum, item) => {
     const price = item.price || 0;
     const quantity = item.quantity || 0;
@@ -88,7 +101,9 @@ const CartPage = () => {
         <div className="cart-summary">
           <p><strong>Total: </strong>${total.toFixed(2)}</p>
           <div className="cart-buttons">
-            <button className="checkout-btn">Proceed to Checkout</button>
+             <Link to="/user/place-order"> {/* Add the Link component */}
+              <button className="checkout-btn">Proceed to Checkout</button>
+            </Link>
             <button className="continue-btn">Continue Shopping</button>
           </div>
         </div>
