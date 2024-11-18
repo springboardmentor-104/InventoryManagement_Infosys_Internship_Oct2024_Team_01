@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './ProductDetails.css';
 
 const ProductDetails = () => {
-  const { productId } = useParams(); // Get the product ID from the URL
+  const { productId } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,6 +34,16 @@ const ProductDetails = () => {
     fetchProductDetails();
   }, [productId]);
 
+  const handleAddToCart = () => {
+    // Logic for adding product to cart
+    alert(`${product.name} added to cart!`);
+  };
+
+  const handleViewCart = () => {
+    // Navigate to cart page
+    navigate('/cart');
+  };
+
   if (loading) {
     return <div className="loading">Loading product details...</div>;
   }
@@ -47,26 +58,24 @@ const ProductDetails = () => {
 
   return (
     <div className="product-details-page">
-      <h2 className="product-name">{product.name}</h2>
-      <img
-        src={`${process.env.REACT_APP_BACKEND_URL}/${product.images?.[0] || 'placeholder.jpg'}`}
-        alt={product.name || 'Product Image'}
-        className="product-image"
-      />
-      <div className="product-info">
-        <p>
-          <strong>Price:</strong> ${product.price?.toFixed(2) || 'N/A'}
-        </p>
-        <p>
-          <strong>Stock:</strong> {product.stockQuantity || 'Out of stock'}
-        </p>
-        <p>
-          <strong>Category:</strong> {product.category?.name || 'Uncategorized'}
-        </p>
-        <p>
-          <strong>Description:</strong> {product.description || 'No description available.'}
-        </p>
+      <button className="back-button" onClick={() => navigate(-1)}>← Back to products</button>
+      <div className="product-header">
+        <img
+          src={`${process.env.REACT_APP_BACKEND_URL}/${product.images?.[0] || 'placeholder.jpg'}`}
+          alt={product.name || 'Product Image'}
+          className="product-image"
+        />
+        <div className="product-info">
+          <p className="product-name">{product.name}</p>
+          <p className="product-price">${product.price?.toFixed(2) || 'N/A'}</p>
+          <p className="product-description">{product.description || 'No description available.'}</p>
+          <div className="button-group">
+            <button className="btn add-to-cart" onClick={handleAddToCart}>Add to Cart</button>
+            <button className="btn view-cart" onClick={handleViewCart}>View Cart</button>
+          </div>
+        </div>
       </div>
+      
     </div>
   );
 };
