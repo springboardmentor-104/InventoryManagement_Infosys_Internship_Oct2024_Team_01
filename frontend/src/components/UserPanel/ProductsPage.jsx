@@ -18,13 +18,13 @@ const ProductsPage = () => {
       try {
         const token = localStorage.getItem('token');
         if (!token) {
-          setError("No token found. Please log in.");
+          setError('No token found. Please log in.');
           return;
         }
 
         const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products`, {
           headers: {
-            'Authorization': `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
 
@@ -44,7 +44,7 @@ const ProductsPage = () => {
   const addToCart = async (productId) => {
     setLoading(true);
     const quantity = 1;
-    const token = localStorage.getItem('token'); // Ensure token is available for cart request
+    const token = localStorage.getItem('token');
 
     if (!token) {
       setCartMessage('You need to log in to add items to the cart.');
@@ -73,35 +73,29 @@ const ProductsPage = () => {
   };
 
   return (
-    <div className="products-container">
+    <div className="user-products-container">
       <h2>Products</h2>
       {cartMessage && <p className="cart-message">{cartMessage}</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <div className="product-list">
         {products.map((product) => (
           <div key={product._id} className="product-card">
-            <Link 
-              to={`/user/products/${product._id}`} 
-              className="product-link"
-            >
+            <Link to={`/user/products/${product._id}`} className="product-link">
               {product.images && product.images.length > 0 ? (
-                <img 
-                  src={getImageUrl(product.images[0])} 
-                  alt={product.name || 'Product'} 
-                />
+                <img src={getImageUrl(product.images[0])} alt={product.name || 'Product'} />
               ) : (
                 <div className="no-image">No Image</div>
               )}
               <h4>{product.name || 'N/A'}</h4>
               <p>${product.price !== null ? product.price.toFixed(2) : 'N/A'}</p>
             </Link>
-            <button 
-              className="add-to-cart-button" 
+            <button
+              className="add-to-cart-button"
               onClick={(e) => {
-                e.preventDefault(); // Prevent navigation on click
+                e.preventDefault();
                 addToCart(product._id);
               }}
-              disabled={loading} // Disable button while loading
+              disabled={loading}
             >
               {loading ? 'Adding...' : 'Add to Cart'}
             </button>

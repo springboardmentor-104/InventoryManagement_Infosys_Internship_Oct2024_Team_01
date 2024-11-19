@@ -1,57 +1,54 @@
-/* Container for Products */
-.products-container {
+/* Scope styles to .user-products-container */
+.user-products-container {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
 }
 
-/* Title Styling */
-.products-container h2 {
+.user-products-container h2 {
   text-align: center;
   margin-bottom: 30px;
   color: #333;
   font-weight: 600;
 }
 
-/* Flex container for products */
-.product-list {
+.user-products-container .product-list {
   display: flex;
-  gap: 10px; /* Small gap between cards */
-  justify-content: flex-start; /* Align cards to the start */
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
   padding: 20px;
-  flex-wrap: wrap; /* Allow wrapping to the next row */
+  margin: 0;
 }
 
-/* Styling for each product card */
-.product-card {
+.user-products-container .product-card {
   background-color: #fff;
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
-  width: 23%; /* 4 cards per row (adjust to fit space) */
+  flex: 1 1 calc(25% - 20px);
+  max-width: calc(25% - 20px);
   box-sizing: border-box;
   transition: transform 0.2s ease;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
 }
 
-.product-card:hover {
+.user-products-container .product-card:hover {
   transform: translateY(-5px);
 }
 
-/* Product image styling */
-.product-card img {
+.user-products-container .product-card img {
   width: 100%;
-  height: 250px;
+  height: 200px;
   border-radius: 5px;
   object-fit: cover;
   background-color: #f3f3f3;
 }
 
-/* Product name styling */
-.product-card h4 {
+.user-products-container .product-card h4 {
   font-size: 1rem;
   color: #333;
   margin: 10px 0 5px;
@@ -62,27 +59,13 @@
   white-space: nowrap;
 }
 
-/* Product price styling */
-.product-card p {
+.user-products-container .product-card p {
   font-size: 0.9rem;
   color: #333;
   margin: 5px 0;
 }
 
-.product-card p.price {
-  font-weight: bold;
-  color: #333;
-}
-
-.product-card p del {
-  color: #999;
-  font-size: 0.8rem;
-  margin-left: 5px;
-  font-weight: normal;
-}
-
-/* Button styling */
-.product-card button {
+.user-products-container .product-card button {
   margin-top: 10px;
   padding: 8px 16px;
   background-color: #0071e3;
@@ -95,43 +78,11 @@
   transition: background-color 0.2s ease;
 }
 
-.product-card button:hover {
+.user-products-container .product-card button:hover {
   background-color: #005bb5;
 }
 
-/* Rating and Discount Badge styling */
-.product-card .rating,
-.product-card .discount {
-  font-size: 0.85rem;
-  color: #ff3f6c;
-  font-weight: bold;
-}
-
-.product-card .rating {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 5px;
-}
-
-.product-card .discount {
-  color: #ff905a;
-  margin-left: 5px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .product-card {
-    width: 45%; /* 2 cards per row */
-  }
-}
-
-@media (max-width: 480px) {
-  .product-card {
-    width: 100%; /* 1 card per row */
-  }
-}
-/* Cart message styling for top-right corner */
-.cart-message {
+.user-products-container .cart-message {
   position: fixed;
   top: 20px;
   right: 20px;
@@ -143,21 +94,27 @@
   z-index: 1000;
   font-size: 14px;
   font-weight: bold;
-  animation: fadeOut 3s ease-in-out forwards; /* Smooth fade-out effect */
+  animation: fadeOut 3s ease-in-out forwards;
 }
 
-/* Keyframes for fade-out animation */
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .user-products-container .product-card {
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
   }
-  80% {
-    opacity: 0.5;
-    transform: translateY(-10px);
+}
+
+@media (max-width: 768px) {
+  .user-products-container .product-card {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
   }
-  100% {
-    opacity: 0;
-    transform: translateY(-20px);
+}
+
+@media (max-width: 480px) {
+  .user-products-container .product-card {
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 }
