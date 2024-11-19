@@ -23,6 +23,7 @@ const ProductDetails = () => {
             },
           }
         );
+        console.log('Product data:', response.data);
 
         if (response.status !== 200) {
           throw new Error('Failed to fetch product details');
@@ -105,7 +106,8 @@ const ProductDetails = () => {
         />
         <div className="product-info">
           <p className="product-name">{product.name}</p>
-          <p className="product-price">${product.price?.toFixed(2) || 'N/A'}</p>
+          <p className="product-price">Rs. {product.price?.toFixed(2) || 'N/A'}</p>
+          <p className="product-category">Category: {product.category?.name || 'Uncategorized'}</p>
           <p className="product-description">
             {product.description || 'No description available.'}
           </p>
