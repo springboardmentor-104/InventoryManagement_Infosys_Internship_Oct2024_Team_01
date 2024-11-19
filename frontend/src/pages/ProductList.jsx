@@ -31,7 +31,26 @@ const ProductList = () => {
         setIsModalOpen(true);
     };
 
-    const handleSaveProduct = async (product) => { const config = { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }; try { if (product._id) { const response = await axios.put( `http://localhost:4000/api/products/${product._id}`, product, config ); setProducts(products.map(p => (p._id === response.data._id ? response.data : p))); } else { const response = await axios.post("http://localhost:4000/api/products", product, config); setProducts([...products, response.data]); } } catch (error) { console.error("Error saving product:", error); alert("Failed to save product. Please check your permissions."); } setIsModalOpen(false); };
+    const handleSaveProduct = async (product) => {
+        const config = { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } };
+        try {
+            if (product._id) {
+                const response = await axios.put(
+                    `http://localhost:4000/api/products/${product._id}`, 
+                    product, 
+                    config
+                );
+                setProducts(products.map(p => (p._id === response.data._id ? response.data : p)));
+            } else {
+                const response = await axios.post("http://localhost:4000/api/products", product, config);
+                setProducts([...products, response.data]);
+            }
+        } catch (error) {
+            console.error("Error saving product:", error);
+            alert("Failed to save product. Please check your permissions.");
+        }
+        setIsModalOpen(false);
+    };
 
     const handleDeleteProduct = async (id) => {
         const config = {
@@ -53,7 +72,7 @@ const ProductList = () => {
         <div className="product-list">
             <h2>Product List</h2>
             <div className="add-product-button">
-            <button onClick={handleAddProduct} className="btn">Add Product</button>
+                <button onClick={handleAddProduct} className="btn">Add Product</button>
             </div>
             <section className="product-grid">
                 {products.map(product => (
