@@ -27,6 +27,7 @@ const ProductsPage = () => {
             'Authorization': `Bearer ${token}`,
           },
         });
+        console.log('Product data:', response.data);
 
         if (response.status !== 200) {
           throw new Error('Failed to fetch products');
@@ -93,7 +94,8 @@ const ProductsPage = () => {
                 <div className="no-image">No Image</div>
               )}
               <h4>{product.name || 'N/A'}</h4>
-              <p>${product.price !== null ? product.price.toFixed(2) : 'N/A'}</p>
+              <p>{product.category?.name || 'Uncategorized'}</p>
+              <p>Rs. {product.price !== null ? product.price.toFixed(2) : 'N/A'}</p>
             </Link>
             <button 
               className="add-to-cart-button" 
