@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../../utils/imageUtil';
 import './CartPage.css';
 
 const CartPage = () => {
@@ -66,10 +67,6 @@ const CartPage = () => {
     const quantity = item.quantity || 0;
     return sum + (price * quantity);
   }, 0);
-
-  const getImageUrl = (imagePath) => {
-    return `${process.env.REACT_APP_BACKEND_URL}/${imagePath}`;
-  };
 
   return (
     <div className="cart-page">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../../utils/imageUtil';
 import './ProductsPage.css';
 
 const ProductsPage = () => {
@@ -8,10 +9,6 @@ const ProductsPage = () => {
   const [error, setError] = useState(null);
   const [cartMessage, setCartMessage] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const getImageUrl = (imagePath) => {
-    return `${process.env.REACT_APP_BACKEND_URL}/${imagePath}`;
-  };
 
   useEffect(() => {
     const fetchProducts = async () => {

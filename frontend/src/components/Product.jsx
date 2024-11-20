@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../utils/imageUtil';
 import './Product.css';
 
 const Product = ({ product, onEdit, onDelete }) => {
-  const getImageUrl = (imagePath) => {
-    return `http://localhost:4000/${imagePath}`;
-  };
 
   return (
     <div className="product-card">

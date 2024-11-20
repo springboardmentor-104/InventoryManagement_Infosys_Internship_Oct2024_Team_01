@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { getImageUrl } from '../../utils/imageUtil';
 import './PlaceOrder.css';
 
 const PlaceOrder = () => {
@@ -67,7 +68,9 @@ const PlaceOrder = () => {
             {cart.map((item) => (
               <div className="product-item" key={item.productId._id}>
                 <img
-                  src={item.productId.imageUrl || 'default-image.jpg'}
+                  src={item.productId.images && item.productId.images.length > 0 
+                    ? getImageUrl(item.productId.images[0]) 
+                    : 'default-image.jpg'}
                   alt={item.productId.name}
                 />
                 <div className="product-info">
