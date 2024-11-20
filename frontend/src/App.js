@@ -4,7 +4,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 // Admin Panel Components
 import AdminDashboard from './components/AdminPanel/AdminDashboard.jsx';
 import Inventory from './components/AdminPanel/Inventory.jsx';
-import ProductsPage from './components/AdminPanel/ProductsPage.jsx';
+import ProductList from './components/AdminPanel/ProductList.jsx';
 import Users from './components/AdminPanel/Users.jsx';
 import AdminLayout from './layouts/AdminLayout.jsx';
 
@@ -28,7 +28,6 @@ import ResetPass from './pages/ResetPass.jsx';
 import Signup from './pages/Signup.jsx';
 
 import './style.css';
-import ProductList from './pages/ProductList.jsx';
 
 const App = () => {
   return (

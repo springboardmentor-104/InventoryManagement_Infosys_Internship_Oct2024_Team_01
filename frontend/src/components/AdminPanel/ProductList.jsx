@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Product from '../components/Product';
-import ProductModal from '../components/ProductModal';
+import Product from '../Product';
+import ProductModal from '../ProductModal';
 import './ProductList.css';
 
 const ProductList = () => {

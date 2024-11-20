@@ -110,3 +110,41 @@
 .product-card button:hover {
     background-color: #3daace;
 }
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .product-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .product-name {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+  
+  .product-price {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .product-rating {
+    color: #ffcc00;
+  }
+  
