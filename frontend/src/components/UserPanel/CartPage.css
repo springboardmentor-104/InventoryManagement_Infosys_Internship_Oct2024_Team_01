@@ -116,9 +116,13 @@ h1 {
 
   .item-image img {
     width: 100px;
-    height: 100px;
+    height: 120px;
     object-fit: cover;
     border-radius: 8px;
+    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
   
   .no-image {
