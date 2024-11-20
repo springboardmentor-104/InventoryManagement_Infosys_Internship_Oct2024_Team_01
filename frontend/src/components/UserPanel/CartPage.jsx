@@ -92,11 +92,11 @@ const CartPage = () => {
               </div>
               <div className="item-info">
                 <p>{item.productId.name || 'N/A'}</p>
-                <p>${item.productId.price !== null ? item.productId.price.toFixed(2) : 'N/A'}</p>
+                <p>Rs.{item.productId.price !== null ? item.productId.price.toFixed(2) : 'N/A'}</p>
                 <p>Quantity: {item.quantity !== null ? item.quantity : 'N/A'}</p>
               </div>
               <div className="item-actions">
-                <p>Total: ${item.productId.price && item.quantity ? (item.productId.price * item.quantity).toFixed(2) : 'N/A'}</p>
+                <p>Total: Rs.{item.productId.price && item.quantity ? (item.productId.price * item.quantity).toFixed(2) : 'N/A'}</p>
                 <button className="remove-btn" onClick={() => removeItemFromCart(item.productId._id)}>Remove</button>
               </div>
             </div>
@@ -108,9 +108,9 @@ const CartPage = () => {
 
       {cart.length > 0 && (
         <div className="cart-summary">
-          <p><strong>Total: </strong>${total.toFixed(2)}</p>
+          <p><strong>Total: </strong>Rs.{total.toFixed(2)}</p>
           <div className="cart-buttons">
-             <Link to="/user/place-order"> {/* Add the Link component */}
+             <Link to="/user/billing-details"> {/* Add the Link component */}
               <button className="checkout-btn">Proceed to Checkout</button>
             </Link>
             <button className="continue-btn">Continue Shopping</button>

@@ -1,18 +1,29 @@
-// src/layouts/UserLayout.jsx
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import UserSidebar from '../components/UserPanel/UserSidebar';
+import CheckoutNavbar from '../components/UserPanel/CheckoutNavbar'; // Import the new Navbar
 import './UserLayout.css';
 
 const UserLayout = () => {
-    return (
-        <div className="user-layout">
-            <UserSidebar />
-            <div className="content">
-                <Outlet />
-            </div>
-        </div>
-    );
+  const location = useLocation();
+
+  // Define checkout-specific routes
+  const checkoutRoutes = ['/user/billing-details', '/user/place-order', '/user/payment'];
+
+  // Check if the current route matches a checkout route
+  const isCheckoutPage = checkoutRoutes.includes(location.pathname);
+
+  return (
+    <div className="user-layout">
+      {/* Conditionally render sidebar */}
+      {!isCheckoutPage && <UserSidebar />}
+      <div className={`content ${isCheckoutPage ? 'no-sidebar' : ''}`}>
+        {/* Conditionally render checkout navbar */}
+        {isCheckoutPage && <CheckoutNavbar />}
+        <Outlet />
+      </div>
+    </div>
+  );
 };
 
 export default UserLayout;

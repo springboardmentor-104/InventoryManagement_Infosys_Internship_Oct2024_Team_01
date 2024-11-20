@@ -1,0 +1,92 @@
+/* Navbar Container */
+.checkout-navbar {
+    background-color: #F4F4F4;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .checkout-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  /* Branding Section */
+  .brand {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .brand-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #555; 
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Steps Section */
+  .steps {
+    display: flex;
+    list-style: none;
+    flex: 2;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .step {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #aaa;
+    text-align: center;
+    margin: 0 25px;
+    position: relative;
+    text-transform: uppercase;
+  }
+  
+  .step::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 15px;
+    height: 2px;
+    background-color: #ddd;
+    transform: translateY(-50%);
+  }
+  
+  .step:first-child::before {
+    display: none;
+  }
+  
+  .step.active {
+    color: #20BD99; /* Darker grey for active step */
+    border-bottom: 2px solid #20BD99; /* Elegant underline for active step */
+  }
+  
+  .step.completed {
+    color: #00d3a2
+  }
+  
+  /* Secure Badge Section */
+  .secure-badge {
+    flex: 1;
+    text-align: right;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #17a2b8;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .secure-icon {
+    font-size: 1.2rem;
+    margin-right: 5px;
+    color: #28a745;
+  }
+  

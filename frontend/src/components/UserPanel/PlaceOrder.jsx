@@ -27,7 +27,7 @@ const PlaceOrder = () => {
         });
 
         if (response.status === 200) {
-          setCart(response.data.products || []); // Populate cart with real-time data
+          setCart(response.data.products || []);
         } else {
           throw new Error('Failed to load cart');
         }
@@ -42,50 +42,73 @@ const PlaceOrder = () => {
   }, []);
 
   // Calculate total price
-  const totalPrice = cart.reduce((total, item) => {
-    const price = item.productId?.price || 0;
-    const quantity = item.quantity || 0;
-    return total + price * quantity;
-  }, 0);
+  const totalMRP = cart.reduce((total, item) => total + item.productId.price * item.quantity, 0);
+  const discount = 100; // Example fixed discount value, adjust as per your logic
+  const shippingFee = totalMRP >= 1000 ? 0 : 79; // Free shipping above Rs.1000
+  const platformFee = 20;
+  const totalAmount = totalMRP - discount + shippingFee + platformFee;
 
-  // Handle "Proceed to Payment" click
+  // Handle "Place Order" click
   const handleProceedToPayment = () => {
     navigate('/user/payment');
   };
 
   return (
-    <div className="place-order-page">
-      <h2>Order Summary</h2>
-
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      {!loading && !error && cart.length > 0 && (
+    <div className="place-order-container">
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p style={{ color: 'red' }}>{error}</p>
+      ) : (
         <>
-          <div className="order-details">
-            <h3>Products</h3>
-            <ul>
-              {cart.map((item) => (
-                <li key={item.productId._id}>
-                  <span>{item.productId.name}</span>
-                  <span>
-                    ({item.quantity} x ${item.productId.price.toFixed(2)})
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <h4>Total Price: ${totalPrice.toFixed(2)}</h4>
+          {/* Left Section */}
+          <div className="order-left">
+            <h3>Order Details</h3>
+            {cart.map((item) => (
+              <div className="product-item" key={item.productId._id}>
+                <img
+                  src={item.productId.imageUrl || 'default-image.jpg'}
+                  alt={item.productId.name}
+                />
+                <div className="product-info">
+                  <h4>{item.productId.name}</h4>
+                  <p>Qty: {item.quantity}</p>
+                  <p>Price: Rs.{item.productId.price.toFixed(2)}</p>
+                </div>
+              </div>
+            ))}
           </div>
-
-          <div className="actions">
-            <button onClick={handleProceedToPayment} className="btn-proceed">
-              Proceed to Payment
+          <div className="order-right">
+            <h3>Order Summary</h3>
+            <div className="price-summary">
+              <div>
+                <span>Total MRP</span>
+                <span>Rs.{totalMRP.toFixed(2)}</span>
+              </div>
+              <div>
+                <span>Discount</span>
+                <span>- Rs.{discount.toFixed(2)}</span>
+              </div>
+              <div>
+                <span>Shipping Fee</span>
+                <span>Rs.{shippingFee.toFixed(2)}</span>
+              </div>
+              <div>
+                <span>Platform Fee</span>
+                <span>Rs.{platformFee.toFixed(2)}</span>
+              </div>
+              <hr />
+              <div>
+                <h4>Total Amount</h4>
+                <h4>Rs.{totalAmount.toFixed(2)}</h4>
+              </div>
+            </div>
+            <button className="place-order-btn" onClick={handleProceedToPayment}>
+              Place Order
             </button>
           </div>
         </>
       )}
-
-      {!loading && !error && cart.length === 0 && <p>Your cart is empty.</p>}
     </div>
   );
 };

@@ -56,10 +56,10 @@ const Payment = () => {
         <h3>Order Summary</h3>
         <div className="summary-details">
           <p>Total MRP: {orderDetails.totalMRP}</p>
-          <p>Discount: -${orderDetails.discount}</p>
-          <p>Platform Fee: ${orderDetails.platformFee}</p>
-          <p>Shipping Fee: ${orderDetails.shippingFee}</p>
-          <h4>Total Amount: ${orderDetails.totalAmount}</h4>
+          <p>Discount: -Rs.{orderDetails.discount}</p>
+          <p>Platform Fee: Rs.{orderDetails.platformFee}</p>
+          <p>Shipping Fee: Rs.{orderDetails.shippingFee}</p>
+          <h4>Total Amount: Rs.{orderDetails.totalAmount}</h4>
         </div>
         <button onClick={handlePayment}>Pay Now</button>
       </div>

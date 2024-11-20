@@ -1,37 +1,112 @@
 .product-list {
-    padding: 1px;
-    max-width: 1200px; 
-    margin: 0 auto; 
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.add-product-button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .btn {
-    margin-bottom: 20px;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #0f6784;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #168cb3;
 }
+
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Set to 3 columns */
-    gap: 20px; /* Spacing between the cards */
+    grid-template-columns: repeat(4, 1fr); /* 4 columns by default */
+    gap: 20px; /* Spacing between cards */
 }
 
-/* Optional: make it responsive to adjust columns based on screen size */
+/* Adjust to 3 columns for smaller screens */
 @media (max-width: 900px) {
     .product-grid {
-        grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
+/* Adjust to 1 column for very small screens */
 @media (max-width: 600px) {
     .product-grid {
-        grid-template-columns: 1fr; /* Single column for small screens */
+        grid-template-columns: 1fr;
     }
+}
+
+/* Product card styling */
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Product image styling */
+.product-card img {
+    width: 100%; /* Full width */
+    height: 250px; /* Fixed height */
+    object-fit: cover; /* Ensures consistent image scaling */
+    border-bottom: 1px solid #ddd;
+}
+
+/* Product details */
+.product-card h4 {
+    margin: 10px 10px 0;
+    font-size: 18px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.product-card p {
+    margin: 5px 10px 10px;
+    color: #555;
+    font-size: 16px;
+}
+
+/* Button styling */
+.product-card button {
+    padding: 10px 15px;
+    margin: 10px;
+    background-color: #1087af;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+    background-color: #3daace;
 }
