@@ -1,5 +1,6 @@
 API Name,URL,Response Body,Query Parameters,Body Parameters,User Access,Validation,Scenerio,Status Code
 Login,POST/api/users/login,"{""token"" : ""eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MjJiYzIzN2Q4M2JhNGVkOWZhNGUzNiIsInJvbGUiOiJhZG1pbiIsImlhd""}",,"email : String, password : String",Public ,"email: String, password: String (hashed)","successful login(201), wrong password(401), incomplete registration(400), invalid credentials(401),,Internal Server Error (500)","201, 400, 401,500"
+Logout,POST /api/users/logout,"{""token"" : ""eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MjJiYzIzN2Q4M2JhNGVkOWZhNGUzNiIsInJvbGUiOiJhZG1pbiIsImlhd""}",,,User/ Admin Authenticated,Clears user session or invalidates JWT token,"Unauthorized Access (401), Server Error (500)","200, 401, 500"
 Register,POST /api/users//register,"New user object - { 
 name
 ""User test1""
@@ -34,6 +35,14 @@ Get All Categories,GET /api/categories,"Array of categories - { ""categories"": 
 Get Category by ID,GET /api/categories/:id,"Single category object - { ""category"": { ... } }",category_id,-,Admin,ID should be a valid ObjectId,"Successful Category Retrieval(201),Invalid Category id(400),Category Not Found(404),Server Error(500)","201, 404,400,500"
 Update Category,PUT /api/categories/:id,"Updated category object - { ""category"": { ... } } { ""message"": ""category updated"" }",-,name,Admin,"ID should be a valid ObjectId, name: String, description: String","Successful Category Update(201),Invalid Category ID(400),Duplicate Category Name(409),Category Not Found(404),Unauthorized Access(401),Server Error(500)","201, 404,400,500"
 Delete Category,DELETE /api/categories/:id,"Deleted category object - { ""category"": { ... } } { ""message"": ""category deleted"" }",-,-,Admin,ID should be a valid ObjectId,"Successful Category Delete(201),Invalid Category ID(400),Category Not Found(404),Unauthorized Access(401),Server Error(500)","201, 404,400,500"
+Add to cart,POST /api/carts,"Added cart object -{ ""cart"": { ... } }","product_id, quantity","{ ""productId"": ""string"", ""quantity"": 1",User Access,ObjectId,"Invalid Product ID (400), Product Not Found (404), Unauthorized Access (401), Server Error (500)","201, 400, 404, 500"
+Get cart,GET /api/carts,"User's cart object -{ ""cart"": { ""products"": [...] } }",,,User,Returns all cart items for the user,"Unauthorized Access (401), Server Error (500)","200, 401, 500"
+Update Cart Item,PUT /api/carts/,"Updated cart object - { ""cart"": { ... } }","{ ""quantity"": 2 }",,User,ProductId must be valid,"Invalid Product ID (400), Product Not Found (404), Unauthorized Access (401), Invalid Quantity (400), Server Error (500)","200, 400, 404, 500"
+Remove from Cart,DELETE /api/carts/,"Updated cart object - { ""cart"": { ... } }",,,User,ProductId must be valid,"Invalid Product ID (400), Product Not Found (404), Unauthorized Access (401), Server Error (500)","200, 400, 404, 500"
+Place Order,POST /api/orders,"Order object -{ ""order"": { ... } }",,"{ ""address"": ""string"", ""paymentMethod"": ""string"" }",User,,"Missing Fields (400), Unauthorized Access (401), Cart Empty (400), Server Error (500)","201, 400, 401, 500"
+Get User Orders,GET /api/orders,"Array of user's orders - { ""orders"": [ ... ] }",,,User,,"Unauthorized Access (401), Server Error (500)","200, 401, 500"
+Upload Product Images,"POST /api/products/
+/images","{ ""message"": ""Images uploaded successfully"", ""images"": [""path/to/image1"", ""path/to/image2"", ...] }",Form-data: images (file),,Admin,"Supports up to 5 images per request, productId must be valid","Invalid Product ID (400), Product Not Found (404), Unauthorized Access (401), Server Error (500)","200, 400, 404, 500"
 Checkpoint***********,,,,,,,,
 Create Checkout,POST/api/checkout,"New checkout object - { ""id"":""G65Hty6"",""user_id"":""G4598"",""payment_status"":""0"",""total_amount"":""70000"",""payment_method""UPI,""shipping_address""lorem ipsum,""date_of_creation"":""20/05/2024""}",-,"user_id,payment_status,total_amount,payment_method,shipping_address,date_of_creation",,"user_id: Number,
 payment_status: Number,
