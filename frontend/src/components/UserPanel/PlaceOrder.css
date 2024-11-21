@@ -81,3 +81,44 @@
 .place-order-btn:hover {
   background-color: #287094;
 }
+
+/* Alert message styles */
+.place-order-container .alert-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1000;
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Success alert */
+.place-order-container .alert-message.success {
+  background-color: #e6f7e1;
+  border: 1px solid #388e3c;
+  color: #388e3c;
+  animation: popJump 0.5s ease-in-out, fadeOut 3s ease-in-out 0.5s forwards;
+}
+
+/* Error alert */
+.place-order-container .alert-message.error {
+  background-color: #f8d7da;
+  border: 1px solid #d9534f;
+  color: #d9534f;
+  animation: popJump 0.5s ease-in-out, fadeOut 3s ease-in-out 0.5s forwards;
+}
+
+/* Fade-out animation */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

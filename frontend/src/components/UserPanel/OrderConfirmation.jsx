@@ -4,7 +4,7 @@ import "./OrderConfirmation.css";
 
 const OrderConfirmation = () => {
   const navigate = useNavigate();
-  
+
   return (
     <div className="order-confirmation-container">
       <div className="order-card">
@@ -16,7 +16,7 @@ const OrderConfirmation = () => {
             alt="Order Illustration"
           />
         </div>
-        <button className="back-to-store" onClick={() => navigate('/user/cart')}>BACK TO STORE</button>
+        <button className="back-to-store" onClick={() => navigate('/user/products')}>BACK TO STORE</button>
         <button className="view-order-details" onClick={() => navigate('/user/my-orders')}>View Order Details</button>
       </div>
       
