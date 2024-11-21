@@ -18,6 +18,7 @@ import PlaceOrder from './components/UserPanel/PlaceOrder.jsx';
 import Payment from'./components/UserPanel/Payment.jsx'
 import BillingDetailsPage from './components/UserPanel/BillingDetailsPage.jsx';
 import UserLayout from './layouts/UserLayout.jsx';
+import OrderConfirmation from'./components/UserPanel/OrderConfirmation.jsx'
 
 // Other Pages
 import ForgotPassword from './pages/ForgotPassword.jsx';
@@ -60,6 +61,7 @@ const App = () => {
             <Route path="billing-details" element={<BillingDetailsPage/>} />
             <Route path="place-order" element={<PlaceOrder />} />
             <Route path="payment" element={<Payment/>} />
+            <Route path="order-confirmation" element={<OrderConfirmation/>} />
           </Route>
         </Routes>
       </Router>

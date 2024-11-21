@@ -1,0 +1,78 @@
+/* Overall Page Layout */
+.order-confirmation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #f5f7fa 50%, #00a9b2 50%);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Order Card */
+  .order-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 320px;
+    text-align: center;
+  }
+  
+  /* Heading */
+  .order-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  /* Subtext */
+  .order-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Image Section */
+  .order-image {
+    margin: 1rem 0;
+  }
+  
+  .order-image img {
+    width: 200px;
+    height: auto;
+  }
+  
+  /* Buttons */
+  .back-to-store {
+    background: linear-gradient(to right, #00a9b2, #00d8b6);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  
+  .back-to-store:hover {
+    background: #00d8b6;
+  }
+  
+  .view-order-details {
+    background: transparent;
+    color: #00a9b2;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid #00a9b2;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .view-order-details:hover {
+    background: #e6f7f7;
+  }
+  

@@ -7,19 +7,31 @@ import './UserLayout.css';
 const UserLayout = () => {
   const location = useLocation();
 
-  // Define checkout-specific routes
-  const checkoutRoutes = ['/user/billing-details', '/user/place-order', '/user/payment'];
+  // Define routes where Checkout Navbar is needed
+  const checkoutNavbarRoutes = [
+    '/user/billing-details',
+    '/user/place-order',
+    '/user/payment',
+  ];
 
-  // Check if the current route matches a checkout route
-  const isCheckoutPage = checkoutRoutes.includes(location.pathname);
+  // Define routes where the sidebar is hidden
+  const noSidebarRoutes = [
+    ...checkoutNavbarRoutes,
+    '/user/order-confirmation', // Order Confirmation route excludes both Sidebar and Navbar
+  ];
+
+  // Check conditions
+  const showSidebar = !noSidebarRoutes.includes(location.pathname);
+  const showCheckoutNavbar =
+    checkoutNavbarRoutes.includes(location.pathname);
 
   return (
     <div className="user-layout">
       {/* Conditionally render sidebar */}
-      {!isCheckoutPage && <UserSidebar />}
-      <div className={`content ${isCheckoutPage ? 'no-sidebar' : ''}`}>
+      {showSidebar && <UserSidebar />}
+      <div className={`content ${!showSidebar ? 'no-sidebar' : ''}`}>
         {/* Conditionally render checkout navbar */}
-        {isCheckoutPage && <CheckoutNavbar />}
+        {showCheckoutNavbar && <CheckoutNavbar />}
         <Outlet />
       </div>
     </div>
