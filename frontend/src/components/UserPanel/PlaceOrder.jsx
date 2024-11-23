@@ -9,7 +9,7 @@ import './PlaceOrder.css';
 const PlaceOrder = () => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [alert, setAlert] = useState(null); // For alerts
+  const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
   const userDetails = getUserDetails();
 
@@ -108,8 +108,35 @@ const PlaceOrder = () => {
             );
 
             if (verifyResponse.data.success) {
-              setAlert({ type: 'success', message: 'Payment successful! Order placed.' });
-              setTimeout(() => navigate('/user/order-confirmation'), 2000);
+              // Create the order in the database after payment verification
+              const orderData = {
+                razorpayPaymentId: response.razorpay_payment_id,
+                razorpayOrderId: response.razorpay_order_id,
+                razorpaySignature: response.razorpay_signature,
+                items: cart.map((item) => ({
+                  product: item.productId._id,
+                  quantity: item.quantity,
+                  price: item.productId.price,
+                })),
+                totalPrice: totalAmount,
+              };
+
+              const createOrderResponse = await axios.post(
+                `${process.env.REACT_APP_BACKEND_URL}/api/orders/place-order`,
+                orderData,
+                {
+                  headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                  },
+                }
+              );
+
+              if (createOrderResponse.status === 201) {
+                setAlert({ type: 'success', message: 'Payment successful! Order placed.' });
+                setTimeout(() => navigate('/user/order-confirmation'), 1000);
+              } else {
+                setAlert({ type: 'error', message: 'Failed to create order in database.' });
+              }
             } else {
               setAlert({ type: 'error', message: 'Payment verification failed. Please try again.' });
             }

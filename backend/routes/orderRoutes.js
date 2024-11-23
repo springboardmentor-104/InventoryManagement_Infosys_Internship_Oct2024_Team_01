@@ -4,7 +4,8 @@ const orderController = require('../controllers/orderController');
 
 const router = express.Router();
 
-router.post('/', verifyToken, isUser, orderController.placeOrder);
+router.post('/place-order', verifyToken, isUser, orderController.placeOrder);
 router.get('/', verifyToken, isUser, orderController.getUserOrders);
+router.get('/:orderId', verifyToken, isUser, orderController.getUserOrders);
 
 module.exports = router;

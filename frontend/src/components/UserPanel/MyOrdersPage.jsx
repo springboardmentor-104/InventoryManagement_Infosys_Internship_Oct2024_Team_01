@@ -11,11 +11,13 @@ const MyOrdersPage = () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/orders`, {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-          }
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
         });
-        setOrders(response.data);
+        console.log('API Response:', response.data); // Debugging
+        setOrders(response.data.orders || []);
       } catch (err) {
+        console.error('Error fetching orders:', err);
         setError(err.response?.data?.message || err.message);
       } finally {
         setLoading(false);
@@ -36,26 +38,30 @@ const MyOrdersPage = () => {
   return (
     <div className="orders-container">
       <h2>Your Orders</h2>
-      <table className="orders-table">
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map((order) => (
-            <tr key={order.id}>
-              <td>{order.id}</td>
-              <td>{order.date}</td>
-              <td>{order.status}</td>
-              <td>${order.total.toFixed(2)}</td>
+      {orders.length > 0 ? (
+        <table className="orders-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Total</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {orders.map((order) => (
+              <tr key={order.id}>
+                <td>{order.id}</td>
+                <td>{new Date(order.date).toLocaleDateString()}</td>
+                <td>{order.status}</td>
+                <td>INR {order.total.toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <div>No orders found.</div>
+      )}
     </div>
   );
 };
