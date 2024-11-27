@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "multer": "^1.4.5-lts.1",
-    "nodemailer": "^6.9.15"
+    "nodemailer": "^6.9.15",
+    "tailwindcss": "^3.4.15"
   }
 }

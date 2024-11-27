@@ -95,16 +95,6 @@
   background-color: rgba(237, 240, 242, 1);
 }
 
-.terms {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-}
-
-.terms input {
-  margin-right: 10px;
-}
-
 .sign-up-btn {
   display: block;
   background-color: #023246;
@@ -146,4 +136,131 @@
   .sign-up-btn {
     width: 30%;
   }
+}
+
+/* General Message Styles */
+.message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Success Message */
+.message.success {
+  background-color: #e6f7e1;
+  border: 0.5px solid #388e3c;
+  color: #388e3c;
+}
+
+/* Error Message */
+.message.error {
+  background-color: #f8d7da;
+  border: 0.5px solid #721c24;
+  color: #721c24;
+}
+
+/* Show animation */
+.message.show {
+  opacity: 1;
+  transform: translateY(0);
+  animation: popJump 0.5s ease-in-out, fadeOut 3s ease-in-out 0.5s forwards;
+}
+
+/* Close Button */
+.message .close-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  padding: 0;
+  line-height: 1;
+}
+
+/* Pop and Jump Animation */
+@keyframes popJump {
+  0% {
+    transform: scale(0.5) translateY(-20px);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade Out Animation */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
+/* Styling for the Terms and Conditions section */
+.terms {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 13px;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+.terms input {
+  margin-right: 3%;
+  accent-color: #023246;
+  width: 10%;
+}
+
+.terms a {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.terms a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.terms a, .terms img, .terms span, .terms input, .terms ion-icon {
+  display: inline;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #555;
+}
+
+.footer-text a {
+  margin-left: 5px; 
+  color: #023246;
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
 }

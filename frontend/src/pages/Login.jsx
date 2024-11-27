@@ -3,6 +3,7 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import './Login.css';
 import { Link } from 'react-router-dom';
+import dashboardImage from '../assests/dashboard.png'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -35,80 +36,49 @@ const Login = () => {
       }
   };
   
-
   return (
-    <div className="login-page">
-      <div className="card-container">
-        {/* Left Panel (Login Form) */}
-        <div className="login-panel">
-          <h2 className="login-title">Login</h2>
-          <div className="google-button">
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/ca85bd4195c3967cf9597af5d7101f3f1cf8777bf80cb8a91b2c6be32dcc5905?placeholderIfAbsent=true&apiKey=6de64210dad5440294bfb16468effd24"
-              alt="Google Icon"
-              className="google-icon"
-            />
-            <span>Sign in with Google</span>
-          </div>
-
-          <form className="login-form" onSubmit={onFinish}>
-            <label className="label">Email</label>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="input-field"
-              required
-            />
-
-            <label className="label">Password</label>
-            <input
-              type="password"
-              placeholder="Minimum 8 characters"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="input-field"
-              required
-            />
-
-            {error && <div className="error-message">{error}</div>}
-
-            <div className="forgot-password">
-              <Link to="/forgot-password">Forgot password?</Link>
-            </div>
-
-            <button className="login-button" type="submit">
-              Sign In
-            </button>
-          </form>
-
-          <div className="register-link">
-            Not registered yet? <Link to="/signup">Create a new account</Link>
-          </div>
-        </div>
-
-        {/* Right Panel (Side Image and Text) */}
-        <div className="side-panel">
-          <div className="side-image-wrapper">
-            <img
-              src="https://images.pexels.com/photos/6169180/pexels-photo-6169180.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt="Background"
-              className="side-image"
-            />
-            <div className="welcome-text">
-              <h3>Welcome Back!</h3>
-              <p>Please sign in to your account with the given details to continue</p>
-              <div className="new-account-text">
-                New here? <Link to="/signup">Create a new account</Link>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="Signup-container">
+    <div className="login-container">
+      <div className="login-right">
+       
+        <img src={dashboardImage} alt="Dashboard" className="dashboard-image" />
+      </div>
+      <div className="login-left">
+        <h2>Log in to your Account</h2>
+        <p className="welcome">Welcome back!</p>
+        
+       
+        <form onSubmit={onFinish}>
+          <input
+            type="email"
+            placeholder="Email"
+            className="input-field"
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="input-field"
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          {error && <p className='text-red-500 font-semibold mt-2 text-xl'>{error}</p>}
+          <button type="submit" className="login-btn">Log In</button>
+        </form>
+        <p className="forgot-password">
+          <a href="/forgot-password">Forgot Password?</a> 
+        </p>
+        <p className="footer-text">
+          Don't have an account? <Link to="/signup">Create an account</Link> 
+        </p>
       </div>
     </div>
+    </div>
   );
+
 };
 
 export default Login;
