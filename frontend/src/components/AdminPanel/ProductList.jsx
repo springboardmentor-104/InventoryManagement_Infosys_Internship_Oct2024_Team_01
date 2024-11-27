@@ -11,7 +11,7 @@ const ProductList = () => {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const response = await axios.get("http://localhost:4000/api/products", {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -30,25 +30,19 @@ const ProductList = () => {
         setCurrentProduct(product);
         setIsModalOpen(true);
     };
-
-    const handleSaveProduct = async (product) => {
-        const config = { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } };
-        try {
-            if (product._id) {
-                const response = await axios.put(
-                    `http://localhost:4000/api/products/${product._id}`, 
-                    product, 
-                    config
-                );
-                setProducts(products.map(p => (p._id === response.data._id ? response.data : p)));
+    const handleSaveProduct = (product) => {
+        setProducts((prevProducts) => {
+            const existingProductIndex = prevProducts.findIndex((p) => p._id === product._id);
+            if (existingProductIndex !== -1) {
+                // Update existing product
+                const updatedProducts = [...prevProducts];
+                updatedProducts[existingProductIndex] = product;
+                return updatedProducts;
             } else {
-                const response = await axios.post("http://localhost:4000/api/products", product, config);
-                setProducts([...products, response.data]);
+                // Add new product
+                return [...prevProducts, product];
             }
-        } catch (error) {
-            console.error("Error saving product:", error);
-            alert("Failed to save product. Please check your permissions.");
-        }
+        });
         setIsModalOpen(false);
     };
 
@@ -60,7 +54,7 @@ const ProductList = () => {
         };
         
         try {
-            await axios.delete(`http://localhost:4000/api/products/${id}`, config);
+            await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/products/${id}`, config);
             setProducts(products.filter(product => product._id !== id));
         } catch (error) {
             console.error("Error deleting product:", error);
